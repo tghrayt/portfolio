@@ -1,23 +1,21 @@
-<div class="container-fluid bg-primary pt-2 pb-2">
-    <div class="container bar-flex-row">
-        <span class="text-white">
-            <i class="fa-regular fa-copyright"></i>
-            {{ currentYear }} Dilanka Rathnasiri. All rights reserved.
-        </span>
+<div class="container bar-flex-row pt-2 pb-2">
+    <span>
+        <i class="fa-regular fa-copyright"></i>
+        {{ currentYear }} Dilanka Rathnasiri. All rights reserved.
+    </span>
 
-        <span class="text-white">
-            Developed with
-            <i
-                class="fa-brands fa-angular text-white cursor-pointer"
-                (click)="openLink('https://angular.dev')"
-            ></i>
-            and
-            <i
-                class="fa-brands fa-bootstrap text-white cursor-pointer"
-                (click)="openLink('https://getbootstrap.com')"
-            ></i>
-        </span>
+    <span>
+        Developed with
+        <i
+            class="fa-brands fa-angular cursor-pointer"
+            (click)="openLink('https://angular.dev')"
+        ></i>
+        and
+        <i
+            class="fa-brands fa-bootstrap cursor-pointer"
+            (click)="openLink('https://getbootstrap.com')"
+        ></i>
+    </span>
 
-        <app-social-media />
-    </div>
+    <app-social-media />
 </div>
