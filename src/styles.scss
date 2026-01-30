@@ -49,14 +49,14 @@ body {
 // nav bar
 
 .box-navbar-text {
-    @extend .text-black;
-    @extend .ms-3;
-    @extend .me-3;
-    @extend .text-decoration-none;
+    color: black;
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .box-navbar-text.active {
-    @extend .fw-bolder;
+    font-weight: bold;
 }
 
 // ---------------------------------------------------------
@@ -79,4 +79,11 @@ body {
 // for change cursor to pointer on icons
 .cursor-pointer {
     cursor: pointer;
+}
+
+// ---------------------------------------------------------
+
+// new custom css
+.custom-text-white {
+    color: white;
 }
