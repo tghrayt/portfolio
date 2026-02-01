@@ -6,7 +6,7 @@
     flex-wrap: wrap;
 }
 
-#aboutMeLeftBox {
+#description {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -14,4 +14,5 @@
     min-width: 20rem;
     max-width: 35rem;
     text-align: center;
+    color: white;
 }

@@ -7,6 +7,7 @@ import { NavBarItem } from '../dto/NavBarItem';
     selector: 'app-nav-bar',
     imports: [RouterLink, RouterLinkActive, SocialMediaComponent],
     templateUrl: './nav-bar.component.html',
+    styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
     menuItems: NavBarItem[] = [

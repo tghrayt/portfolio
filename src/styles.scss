@@ -12,7 +12,6 @@ body {
 // common
 
 .custom-wrap-flex-row {
-    @extend .container;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -21,8 +20,6 @@ body {
 }
 
 .custom-card {
-    @extend .card;
-    @extend .shadow;
     min-width: 25rem;
     max-width: 25rem;
     text-align: center;
@@ -55,10 +52,6 @@ body {
     margin-right: 1rem;
 }
 
-.box-navbar-text.active {
-    font-weight: bold;
-}
-
 // ---------------------------------------------------------
 
 // home section
@@ -67,7 +60,6 @@ body {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
-    @extend .container;
 
     h1 {
         text-align: center;
@@ -79,11 +71,4 @@ body {
 // for change cursor to pointer on icons
 .cursor-pointer {
     cursor: pointer;
-}
-
-// ---------------------------------------------------------
-
-// new custom css
-.custom-text-white {
-    color: white;
 }
