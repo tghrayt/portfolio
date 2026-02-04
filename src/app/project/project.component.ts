@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { LinkService } from '../services/link.service';
+
 import { ProjectItem } from '../dto/ProjectItem';
 
 @Component({
@@ -11,14 +11,7 @@ import { ProjectItem } from '../dto/ProjectItem';
 export class ProjectComponent implements OnInit {
     projects: ProjectItem[] = [];
 
-    openLink(link: string): void {
-        this.linkService.openLinkInNewTab(link);
-    }
-
-    constructor(
-        private dataService: DataService,
-        private linkService: LinkService
-    ) {}
+    constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
         this.dataService

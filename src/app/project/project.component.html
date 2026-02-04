@@ -4,12 +4,14 @@
             <div class="card-body">
                 <h4>{{ project.title }}</h4>
                 <p class="text-secondary">{{ project.description }}</p>
-                <button
-                    (click)="openLink(project.link)"
+                <a
+                    [href]="project.link"
                     class="btn btn-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
                     View on <i class="fa-brands fa-github"></i>
-                </button>
+                </a>
             </div>
         </div>
     }

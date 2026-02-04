@@ -4,9 +4,14 @@
             <div class="card-body">
                 <h4>{{ blog.title }}</h4>
                 <p class="text-secondary">{{ blog.description }}</p>
-                <button (click)="openLink(blog.link)" class="btn btn-primary">
+                <a
+                    [href]="blog.link"
+                    class="btn btn-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Read Article on <i class="fa-brands fa-dev"></i>
-                </button>
+                </a>
             </div>
         </div>
     }

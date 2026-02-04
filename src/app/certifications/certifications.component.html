@@ -9,12 +9,14 @@
                         {{ certificate.organization }}
                     </h4>
                     <h6>{{ certificate.time }}</h6>
-                    <button
-                        (click)="openLink(certificate.link)"
+                    <a
+                        [href]="certificate.link"
                         class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         View Certificate
-                    </button>
+                    </a>
                 </div>
             </div>
         }
