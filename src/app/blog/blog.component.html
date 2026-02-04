@@ -1,18 +1,11 @@
 <div class="custom-wrap-flex-row container">
     @for (blog of blogs; track blog.title) {
-        <div class="custom-card card shadow">
-            <div class="card-body">
-                <h4>{{ blog.title }}</h4>
-                <p class="text-secondary">{{ blog.description }}</p>
-                <a
-                    [href]="blog.link"
-                    class="btn btn-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Read Article on <i class="fa-brands fa-dev"></i>
-                </a>
-            </div>
-        </div>
+    <p-card [header]="blog.title" [subheader]="blog.description" class="shadow">
+        <ng-template pTemplate="footer">
+            <a [href]="blog.link" target="_blank" rel="noopener noreferrer">
+                <p-button label="Read Article on" icon="fa-brands fa-dev" iconPos="right"></p-button>
+            </a>
+        </ng-template>
+    </p-card>
     }
 </div>

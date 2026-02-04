@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogItem } from '../dto/BlogItem';
 import { DataService } from '../services/data.service';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-blog',
-    imports: [],
+    imports: [CardModule, ButtonModule],
     templateUrl: './blog.component.html',
+    styleUrl: './blog.component.scss'
 })
 export class BlogComponent implements OnInit {
     blogs: BlogItem[] = [];
 
-    constructor(private dataService: DataService) {}
+    constructor(private dataService: DataService) { }
 
     ngOnInit(): void {
         this.dataService.loadData<BlogItem[]>('blogs').subscribe((data) => {
