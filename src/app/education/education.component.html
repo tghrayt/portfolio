@@ -1,9 +1,9 @@
 <div class="home-section-box container">
     <h1>Education</h1>
-    <div class="custom-wrap-flex-row container">
+    <div id="educationMainBox" class="container">
         @for (item of educationItems; track item.title) {
-            <div class="custom-card card shadow">
-                <div class="card-body">
+            <p-card class="shadow">
+                <div class="education-card-content">
                     <i
                         class="fa-solid fa-graduation-cap fa-3x text-primary"
                     ></i>
@@ -11,7 +11,7 @@
                     <h4 class="text-secondary">{{ item.organization }}</h4>
                     <h6>{{ item.time }}</h6>
                 </div>
-            </div>
+            </p-card>
         }
     </div>
 </div>

@@ -1,11 +1,19 @@
 <div class="custom-wrap-flex-row container">
     @for (blog of blogs; track blog.title) {
-    <p-card [header]="blog.title" [subheader]="blog.description" class="shadow">
-        <ng-template pTemplate="footer">
-            <a [href]="blog.link" target="_blank" rel="noopener noreferrer">
-                <p-button label="Read Article on" icon="fa-brands fa-dev" iconPos="right"></p-button>
-            </a>
-        </ng-template>
-    </p-card>
+        <p-card
+            [header]="blog.title"
+            [subheader]="blog.description"
+            class="shadow"
+        >
+            <ng-template pTemplate="footer">
+                <a [href]="blog.link" target="_blank" rel="noopener noreferrer">
+                    <p-button
+                        label="Read Article on"
+                        icon="fa-brands fa-dev"
+                        iconPos="right"
+                    ></p-button>
+                </a>
+            </ng-template>
+        </p-card>
     }
 </div>

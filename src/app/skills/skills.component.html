@@ -1,12 +1,12 @@
 <div class="home-section-box container">
     <h1>Skills</h1>
-    <div class="custom-wrap-flex-row container">
+    <div id="skillsMainBox" class="container">
         @for (item of skillsItems; track item.name) {
-            <div class="custom-card card shadow text-bg-primary">
-                <div class="card-body">
+            <p-card class="shadow text-bg-primary">
+                <div class="skills-card-content">
                     <h6>{{ item.name }}</h6>
                 </div>
-            </div>
+            </p-card>
         }
     </div>
 </div>

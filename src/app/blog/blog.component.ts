@@ -8,12 +8,12 @@ import { ButtonModule } from 'primeng/button';
     selector: 'app-blog',
     imports: [CardModule, ButtonModule],
     templateUrl: './blog.component.html',
-    styleUrl: './blog.component.scss'
+    styleUrl: './blog.component.scss',
 })
 export class BlogComponent implements OnInit {
     blogs: BlogItem[] = [];
 
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
         this.dataService.loadData<BlogItem[]>('blogs').subscribe((data) => {

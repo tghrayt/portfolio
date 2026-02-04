@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModule } from 'primeng/card';
+
 import { SkillItem } from '../dto/SkillItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-skills',
-    imports: [],
+    imports: [CardModule],
     templateUrl: './skills.component.html',
     styleUrl: './skills.component.scss',
 })

@@ -1,4 +1,4 @@
-#skillsMainBox {
+#whatIDoMainBox {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -7,20 +7,15 @@
 }
 
 p-card {
+    min-width: 25rem;
+    max-width: 25rem;
     text-align: center;
 }
 
-.p-card-body {
-    padding-bottom: 0;
-}
-
-.skills-card-content {
+.what-i-do-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-h6 {
-    margin-bottom: 0;
+    justify-content: space-around;
+    gap: 1rem;
 }

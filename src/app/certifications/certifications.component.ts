@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+
 import { CertificateItem } from '../dto/CertificateItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-certifications',
-    imports: [],
+    imports: [CardModule, ButtonModule],
     templateUrl: './certifications.component.html',
+    styleUrl: './certifications.component.scss',
 })
 export class CertificationsComponent implements OnInit {
     certificates: CertificateItem[] = [];

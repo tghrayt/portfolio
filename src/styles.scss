@@ -9,31 +9,6 @@ body {
 
 // ---------------------------------------------------------
 
-// common
-
-.custom-wrap-flex-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.custom-card {
-    min-width: 25rem;
-    max-width: 25rem;
-    text-align: center;
-
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-    }
-}
-
-// ---------------------------------------------------------
-
 // nav bar and footer
 
 .bar-flex-row {
