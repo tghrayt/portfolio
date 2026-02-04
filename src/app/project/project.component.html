@@ -1,18 +1,22 @@
-<div class="custom-wrap-flex-row container">
+<div id="mainBox" class="container">
     @for (project of projects; track project.title) {
-        <div class="custom-card card shadow">
-            <div class="card-body">
-                <h4>{{ project.title }}</h4>
-                <p class="text-secondary">{{ project.description }}</p>
+        <p-card
+            [header]="project.title"
+            [subheader]="project.description"
+            class="shadow"
+        >
+            <ng-template pTemplate="footer">
                 <a
                     [href]="project.link"
-                    class="btn btn-primary"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    View on <i class="fa-brands fa-github"></i>
+                    <p-button
+                        icon="fa-brands fa-github"
+                        label="View on Github"
+                    ></p-button>
                 </a>
-            </div>
-        </div>
+            </ng-template>
+        </p-card>
     }
 </div>

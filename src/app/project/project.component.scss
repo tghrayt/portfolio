@@ -1,0 +1,17 @@
+#mainBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+p-card {
+    min-width: 25rem;
+    max-width: 25rem;
+    text-align: center;
+}
