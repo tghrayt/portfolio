@@ -8,7 +8,6 @@ import { ButtonModule } from 'primeng/button';
     selector: 'app-blog',
     imports: [CardModule, ButtonModule],
     templateUrl: './blog.component.html',
-    styleUrl: './blog.component.scss',
 })
 export class BlogComponent implements OnInit {
     blogs: BlogItem[] = [];
