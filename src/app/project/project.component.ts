@@ -9,7 +9,6 @@ import { ProjectItem } from '../dto/ProjectItem';
     selector: 'app-project',
     imports: [CardModule, ButtonModule],
     templateUrl: './project.component.html',
-    styleUrl: './project.component.scss',
 })
 export class ProjectComponent implements OnInit {
     projects: ProjectItem[] = [];
