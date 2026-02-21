@@ -1,27 +1,25 @@
-<div class="container-fluid border-top">
-    <div class="container bar-flex-row pt-3 pb-2">
-        <span>
-            <i class="fa-regular fa-copyright"></i>
-            {{ currentYear }} Dilanka Rathnasiri. All rights reserved.
-        </span>
+<div class="w-full px-16 py-3 border-t border-t-slate-400 grid grid-cols-3">
+    <span class="justify-self-start">
+        <i class="fa-regular fa-copyright"></i>
+        {{ currentYear }} Dilanka Rathnasiri. All rights reserved.
+    </span>
 
-        <span>
-            Developed with
-            <a
-                href="https://angular.dev"
-                class="fa-brands fa-angular"
-                target="_blank"
-                rel="noopener noreferrer"
-            ></a>
-            and
-            <a
-                href="https://getbootstrap.com"
-                class="fa-brands fa-bootstrap"
-                target="_blank"
-                rel="noopener noreferrer"
-            ></a>
-        </span>
+    <span class="justify-self-center">
+        Developed with
+        <a
+            href="https://angular.dev"
+            class="fa-brands fa-angular"
+            target="_blank"
+            rel="noopener noreferrer"
+        ></a>
+        and
+        <a
+            href="https://getbootstrap.com"
+            class="fa-brands fa-bootstrap"
+            target="_blank"
+            rel="noopener noreferrer"
+        ></a>
+    </span>
 
-        <app-social-media />
-    </div>
+    <app-social-media class="justify-self-end" />
 </div>
