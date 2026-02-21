@@ -1,11 +1,11 @@
-<div class="home-section-box container">
-    <h1>Certifications</h1>
-    <div id="certMainBox" class="container">
+<div class="flex flex-col items-center justify-center gap-7">
+    <span class="text-3xl font-bold">Certifications</span>
+    <div class="flex flex-wrap gap-7 justify-center">
         @for (certificate of certificates; track certificate.title) {
             <p-card
                 [header]="certificate.title"
                 [subheader]="certificate.organization"
-                class="shadow"
+                class="border border-zinc-400 drop-shadow-xl/20 text-center min-w-100 max-w-100"
             >
                 <p>{{ certificate.time }}</p>
                 <ng-template pTemplate="footer">
