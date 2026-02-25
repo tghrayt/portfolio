@@ -8,7 +8,6 @@ import { EducationItem } from '../dto/EducationItem';
     selector: 'app-education',
     imports: [CardModule],
     templateUrl: './education.component.html',
-    styleUrl: './education.component.scss',
 })
 export class EducationComponent implements OnInit {
     educationItems: EducationItem[] = [];
