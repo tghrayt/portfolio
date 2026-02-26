@@ -8,7 +8,6 @@ import { DataService } from '../services/data.service';
     selector: 'app-skills',
     imports: [CardModule],
     templateUrl: './skills.component.html',
-    styleUrl: './skills.component.scss',
 })
 export class SkillsComponent implements OnInit {
     skillsItems: SkillItem[] = [];
