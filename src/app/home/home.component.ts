@@ -17,6 +17,5 @@ import { EducationComponent } from '../education/education.component';
         EducationComponent,
     ],
     templateUrl: './home.component.html',
-    styleUrl: './home.component.scss',
 })
 export class HomeComponent {}
