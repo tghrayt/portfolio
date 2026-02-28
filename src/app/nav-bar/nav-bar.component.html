@@ -1,11 +1,11 @@
 <div
-    class="w-full px-16 py-3 border-b border-b-slate-400 grid grid-cols-3 content-center"
+    class="w-full px-16 py-3 border-b border-b-slate-400 grid grid-cols-3 content-center items-center"
 >
     <a class="justify-self-start text-xl font-bold" routerLink="/"
         >Dilanka Rathnasiri
     </a>
 
-    <div class="justify-self-center">
+    <div class="justify-self-center flex gap-7">
         @for (item of menuItems; track item.label) {
             <a
                 class="box-navbar-text"
