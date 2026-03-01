@@ -25,6 +25,11 @@
         "link": "https://github.com/dilanka-rathnasiri/data-dashboard"
     },
     {
+        "title": "todo-app",
+        "description": "Simple todo app built with Angular",
+        "link": "https://github.com/dilanka-rathnasiri/todo-app"
+    },
+    {
         "title": "fork of iesl-chapter-web",
         "description": "Fork of my contributions to the IESL Student Chapter of University of Moratuwa",
         "link": "https://github.com/dilanka-rathnasiri/iesl-chapter-web"
@@ -35,9 +40,9 @@
         "link": "https://github.com/dilanka-rathnasiri/k8s-hpa"
     },
     {
-        "title": "launch-ec2",
-        "description": "Terraform infrastructure as code for launching an EC2 instance",
-        "link": "https://github.com/dilanka-rathnasiri/launch-ec2"
+        "title": "terraform-aws-ec2",
+        "description": "A Terraform module to create an AWS EC2 instance",
+        "link": "https://github.com/dilanka-rathnasiri/terraform-aws-ec2"
     },
     {
         "title": "s3-with-versioning",
