@@ -1,9 +1,11 @@
-<div id="socialMediaMainBox">
+<div class="flex justify-end gap-6">
     @for (item of socialMediaItems; track item.label) {
-        <i
+        <a
+            [href]="item.link"
             [class]="item.icon"
-            (click)="openLink(item.link)"
-            class="box-navbar-text cursor-pointer"
-        ></i>
+            class="box-navbar-text"
+            target="_blank"
+            rel="noopener noreferrer"
+        ></a>
     }
 </div>

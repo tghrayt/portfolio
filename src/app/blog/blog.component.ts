@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogItem } from '../dto/BlogItem';
 import { DataService } from '../services/data.service';
-import { LinkService } from '../services/link.service';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-blog',
-    imports: [],
+    imports: [CardModule, ButtonModule],
     templateUrl: './blog.component.html',
 })
 export class BlogComponent implements OnInit {
     blogs: BlogItem[] = [];
 
-    openLink(link: string): void {
-        this.linkService.openLinkInNewTab(link);
-    }
-
-    constructor(
-        private dataService: DataService,
-        private linkService: LinkService
-    ) {}
+    constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
         this.dataService.loadData<BlogItem[]>('blogs').subscribe((data) => {

@@ -1,23 +1,23 @@
-<nav class="navbar navbar-expand-lg bg-primary">
-    <div class="container bar-flex-row">
-        <a class="navbar-brand fw-bold text-white" routerLink="/">
-            Dilanka Rathnasiri
-        </a>
+<div
+    class="w-full px-16 py-3 border-b border-b-slate-400 grid grid-cols-3 content-center items-center"
+>
+    <a class="justify-self-start text-xl font-bold" routerLink="/"
+        >Dilanka Rathnasiri
+    </a>
 
-        <div class="bar-flex-row">
-            @for (item of menuItems; track item.label) {
-                <a
-                    class="box-navbar-text"
-                    [routerLink]="item.link"
-                    routerLinkActive="active"
-                    aria-current="page"
-                    [routerLinkActiveOptions]="{ exact: item.exact }"
-                >
-                    {{ item.label }}
-                </a>
-            }
-        </div>
-
-        <app-social-media />
+    <div class="justify-self-center flex gap-7">
+        @for (item of menuItems; track item.label) {
+            <a
+                class="box-navbar-text"
+                [routerLink]="item.link"
+                routerLinkActive="active"
+                aria-current="page"
+                [routerLinkActiveOptions]="{ exact: item.exact }"
+            >
+                {{ item.label }}
+            </a>
+        }
     </div>
-</nav>
+
+    <app-social-media class="justify-self-end" />
+</div>

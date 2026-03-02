@@ -1,23 +1,43 @@
-<div class="container-fluid bg-primary pt-2 pb-2">
-    <div class="container bar-flex-row">
-        <span class="text-white">
-            <i class="fa-regular fa-copyright"></i>
-            {{ currentYear }} Dilanka Rathnasiri. All rights reserved.
-        </span>
+<div
+    class="w-full px-16 py-3 border-t border-t-slate-400 grid grid-cols-3 items-center"
+>
+    <span class="justify-self-start">
+        <i class="fa-regular fa-copyright"></i>
+        {{ currentYear }} Dilanka Rathnasiri. All rights reserved.
+    </span>
 
-        <span class="text-white">
-            Developed with
-            <i
-                class="fa-brands fa-angular text-white cursor-pointer"
-                (click)="openLink('https://angular.dev')"
-            ></i>
-            and
-            <i
-                class="fa-brands fa-bootstrap text-white cursor-pointer"
-                (click)="openLink('https://getbootstrap.com')"
-            ></i>
-        </span>
+    <span class="justify-self-center flex items-center gap-1.5">
+        Developed with
+        <a
+            href="https://angular.dev"
+            class="fa-brands fa-angular text-xl"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Angular"
+        ></a>
+        <a
+            href="https://tailwindcss.com"
+            class="fa-brands fa-tailwind-css text-xl"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Tailwind CSS"
+        >
+        </a>
+        <a
+            href="https://primeng.org"
+            class="inline-flex"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="PrimeNG"
+        >
+            <img
+                ngSrc="assets/icons/prime-svgrepo-com.svg"
+                alt="PrimeNG"
+                width="25"
+                height="25"
+            />
+        </a>
+    </span>
 
-        <app-social-media />
-    </div>
+    <app-social-media class="justify-self-end" />
 </div>

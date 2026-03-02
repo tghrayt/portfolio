@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModule } from 'primeng/card';
+
 import { WhatIDoItem } from '../dto/WhatIDoItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-what-i-do',
-    imports: [],
+    imports: [CardModule],
     templateUrl: './what-i-do.component.html',
 })
 export class WhatIDoComponent implements OnInit {

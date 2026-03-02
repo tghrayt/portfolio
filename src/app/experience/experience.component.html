@@ -1,14 +1,16 @@
-<div class="home-section-box">
-    <h1>Experience</h1>
-    <div class="custom-wrap-flex-row">
+<div class="flex flex-col items-center justify-center gap-7">
+    <span class="text-3xl font-bold">Experience</span>
+    <div class="flex flex-wrap gap-7 justify-center">
         @for (item of experienceItems; track item.title) {
-            <div class="custom-card">
-                <div class="card-body">
-                    <h4>{{ item.title }}</h4>
-                    <h4 class="text-secondary">{{ item.organization }}</h4>
+            <p-card
+                class="border border-zinc-400 drop-shadow-xl/20 text-center min-w-100 max-w-100"
+                [header]="item.title"
+                [subheader]="item.organization"
+            >
+                <ng-template pTemplate="footer">
                     <h6>{{ item.time }}</h6>
-                </div>
-            </div>
+                </ng-template>
+            </p-card>
         }
     </div>
 </div>

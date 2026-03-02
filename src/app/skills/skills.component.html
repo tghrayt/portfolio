@@ -1,12 +1,14 @@
-<div class="home-section-box">
-    <h1>Skills</h1>
-    <div class="custom-wrap-flex-row">
+<div class="flex flex-col items-center justify-center gap-7">
+    <span class="text-3xl font-bold">Skills</span>
+    <div class="flex flex-wrap gap-7 justify-center">
         @for (item of skillsItems; track item.name) {
-            <div class="custom-card text-bg-primary">
-                <div class="card-body">
-                    <h6>{{ item.name }}</h6>
-                </div>
-            </div>
+            <p-card
+                class="border bg-blue-500! border-zinc-400 drop-shadow-xl/20"
+            >
+                <span class="text-l text-white font-semibold">{{
+                    item.name
+                }}</span>
+            </p-card>
         }
     </div>
 </div>
