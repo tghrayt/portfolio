@@ -1,14 +1,10 @@
-<div class="flex flex-col items-center justify-center gap-7">
-    <span class="text-3xl font-bold">Skills</span>
-    <div class="flex flex-wrap gap-7 justify-center">
+<div class="flex flex-col items-center justify-center gap-10 mt-16">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100">Skills</h2>
+    <div class="flex flex-wrap gap-4 justify-center max-w-4xl">
         @for (item of skillsItems; track item.name) {
-            <p-card
-                class="border bg-blue-500! border-zinc-400 drop-shadow-xl/20"
-            >
-                <span class="text-l text-white font-semibold">{{
-                    item.name
-                }}</span>
-            </p-card>
+            <div class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full shadow-sm hover:shadow-md hover:border-blue-500 dark:hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                <span class="text-lg font-semibold text-slate-700 dark:text-slate-200">{{ item.name }}</span>
+            </div>
         }
     </div>
 </div>

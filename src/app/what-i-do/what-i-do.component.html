@@ -1,18 +1,14 @@
-<div class="flex flex-col items-center justify-center gap-7">
-    <span class="text-3xl font-bold">What I do</span>
-    <div class="flex flex-wrap gap-7 justify-center">
+<div class="flex flex-col items-center justify-center gap-10 mt-16">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100">What I Do</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         @for (item of whatIDoItems; track item.title) {
-            <p-card
-                class="border border-zinc-400 drop-shadow-xl/20 text-center min-w-100 max-w-100"
-            >
-                <div class="flex flex-col items-center justify-center gap-4">
-                    <i
-                        [class]="`${item.icon} fa-3x text-primary text-blue-500`"
-                    ></i>
-                    <span class="text-xl font-bold">{{ item.title }}</span>
-                    <p class="card-text">{{ item.description }}</p>
+            <div class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center">
+                <div class="w-16 h-16 rounded-full bg-blue-50 dark:bg-slate-700 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-100 dark:group-hover:bg-slate-600 transition-all duration-300">
+                    <i [class]="item.icon + ' fa-2x text-blue-600 dark:text-blue-400'"></i>
                 </div>
-            </p-card>
+                <h3 class="text-xl font-bold mb-3 text-slate-800 dark:text-white">{{ item.title }}</h3>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">{{ item.description }}</p>
+            </div>
         }
     </div>
 </div>
