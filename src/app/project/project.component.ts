@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
 
 import { ProjectItem } from '../dto/ProjectItem';
 
 @Component({
     selector: 'app-project',
-    imports: [CardModule, ButtonModule],
     templateUrl: './project.component.html',
 })
 export class ProjectComponent implements OnInit {
