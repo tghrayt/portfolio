@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SkillItem } from '../dto/SkillItem';
+import { SkillCategory } from '../dto/SkillItem';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { DataService } from '../services/data.service';
     templateUrl: './skills.component.html',
 })
 export class SkillsComponent implements OnInit {
-    skillsItems: SkillItem[] = [];
+    skillCategories: SkillCategory[] = [];
 
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.dataService.loadData<any[]>('skills').subscribe((data) => {
-            this.skillsItems = data;
+        this.dataService.loadData<SkillCategory[]>('skills').subscribe((data) => {
+            this.skillCategories = data;
         });
     }
 }

@@ -2,16 +2,19 @@
     {
         "title": "Senior Software Engineer",
         "organization": "GTN Tech",
-        "time": "From April 2024 to Present"
+        "time": "From April 2024 to Present",
+        "techStack": ["Angular", "TypeScript", "Node.js", "Docker"]
     },
     {
         "title": "Software Engineer",
         "organization": "GTN Tech",
-        "time": "From May 2022 to March 2024"
+        "time": "From May 2022 to March 2024",
+        "techStack": ["Java", "Spring Boot", "MySQL", "Redis"]
     },
     {
         "title": "Software Engineering Intern",
         "organization": "Persistent Systems",
-        "time": "From October 2020 to March 2021"
+        "time": "From October 2020 to March 2021",
+        "techStack": ["Python", "Django", "PostgreSQL"]
     }
 ]

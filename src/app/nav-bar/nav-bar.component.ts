@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SocialMediaComponent } from '../social-media/social-media.component';
 import { NavBarItem } from '../dto/NavBarItem';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
     selector: 'app-nav-bar',
@@ -9,26 +10,25 @@ import { NavBarItem } from '../dto/NavBarItem';
     templateUrl: './nav-bar.component.html',
     styleUrls: ['./nav-bar.component.scss'],
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
+    themeService = inject(ThemeService);
+    isMobileMenuOpen = false;
+
     menuItems: NavBarItem[] = [
         { label: 'Home', link: '/', exact: true },
         { label: 'Projects', link: '/projects', exact: false },
         { label: 'Blogs', link: '/blogs', exact: false },
     ];
 
-    isDarkMode = false;
+    toggleMobileMenu() {
+        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    }
 
-    ngOnInit() {
-        if (typeof document !== 'undefined') {
-            this.isDarkMode = document.documentElement.classList.contains('dark');
-        }
+    closeMobileMenu() {
+        this.isMobileMenuOpen = false;
     }
 
     toggleDarkMode() {
-        if (typeof document !== 'undefined') {
-            const html = document.documentElement;
-            html.classList.toggle('dark');
-            this.isDarkMode = html.classList.contains('dark');
-        }
+        this.themeService.toggleTheme();
     }
 }
