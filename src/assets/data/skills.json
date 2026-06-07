@@ -3,19 +3,34 @@
         "category": "Backend",
         "skills": [
             { "name": "Java", "icon": "fa-brands fa-java text-red-500" },
-            { "name": "Spring Boot", "icon": "fa-solid fa-leaf text-green-500" },
+            {
+                "name": "Spring Boot",
+                "icon": "fa-solid fa-leaf text-green-500"
+            },
             { "name": "Python", "icon": "fa-brands fa-python text-blue-500" },
-            { "name": "REST API", "icon": "fa-solid fa-network-wired text-slate-500" }
+            {
+                "name": "REST API",
+                "icon": "fa-solid fa-network-wired text-slate-500"
+            }
         ]
     },
     {
         "category": "Cloud & DevOps",
         "skills": [
             { "name": "AWS", "icon": "fa-brands fa-aws text-orange-500" },
-            { "name": "Terraform", "icon": "fa-solid fa-cloud text-purple-500" },
-            { "name": "Kubernetes", "icon": "fa-solid fa-dharmachakra text-blue-600" },
+            {
+                "name": "Terraform",
+                "icon": "fa-solid fa-cloud text-purple-500"
+            },
+            {
+                "name": "Kubernetes",
+                "icon": "fa-solid fa-dharmachakra text-blue-600"
+            },
             { "name": "Docker", "icon": "fa-brands fa-docker text-blue-400" },
-            { "name": "GitLab CI/CD", "icon": "fa-brands fa-gitlab text-orange-600" },
+            {
+                "name": "GitLab CI/CD",
+                "icon": "fa-brands fa-gitlab text-orange-600"
+            },
             { "name": "Linux", "icon": "fa-brands fa-linux text-yellow-500" }
         ]
     }

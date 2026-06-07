@@ -5,25 +5,37 @@ import { NgOptimizedImage } from '@angular/common';
     selector: 'app-about-me',
     imports: [NgOptimizedImage],
     templateUrl: './about-me.component.html',
-    styles: [`
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            background-color: currentColor;
-            animation: blink 1s step-end infinite;
-            margin-left: 4px;
-            height: 1.2em;
-            vertical-align: middle;
-            margin-bottom: -0.1em;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-    `]
+    styles: [
+        `
+            .cursor {
+                display: inline-block;
+                width: 3px;
+                background-color: currentColor;
+                animation: blink 1s step-end infinite;
+                margin-left: 4px;
+                height: 1.2em;
+                vertical-align: middle;
+                margin-bottom: -0.1em;
+            }
+            @keyframes blink {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+            }
+        `,
+    ],
 })
 export class AboutMeComponent implements OnInit, OnDestroy {
-    titles: string[] = ['Software Engineer', 'Backend Developer', 'Cloud Enthusiast', 'System Architect'];
+    titles: string[] = [
+        'Software Engineer',
+        'Backend Developer',
+        'Cloud Enthusiast',
+        'System Architect',
+    ];
     currentTitle: string = '';
     private titleIndex: number = 0;
     private charIndex: number = 0;
@@ -48,10 +60,16 @@ export class AboutMeComponent implements OnInit, OnDestroy {
         const currentFullTitle = this.titles[this.titleIndex];
 
         if (this.isDeleting) {
-            this.currentTitle = currentFullTitle.substring(0, this.charIndex - 1);
+            this.currentTitle = currentFullTitle.substring(
+                0,
+                this.charIndex - 1
+            );
             this.charIndex--;
         } else {
-            this.currentTitle = currentFullTitle.substring(0, this.charIndex + 1);
+            this.currentTitle = currentFullTitle.substring(
+                0,
+                this.charIndex + 1
+            );
             this.charIndex++;
         }
 

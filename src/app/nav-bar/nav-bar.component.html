@@ -1,7 +1,13 @@
-<nav class="sticky top-0 z-50 w-full px-6 md:px-12 lg:px-16 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<nav
+    class="sticky top-0 z-50 w-full px-6 md:px-12 lg:px-16 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300"
+>
     <div class="flex justify-between items-center max-w-screen-xl mx-auto">
         <!-- Logo / Brand -->
-        <a class="text-xl font-bold text-primary dark:text-primary-hover transition-colors" routerLink="/" (click)="closeMobileMenu()">
+        <a
+            class="text-xl font-bold text-primary dark:text-primary-hover transition-colors"
+            routerLink="/"
+            (click)="closeMobileMenu()"
+        >
             Dilanka Rathnasiri
         </a>
 
@@ -22,26 +28,58 @@
 
         <!-- Right Side: Theme Toggle & Socials (Desktop) -->
         <div class="hidden md:flex items-center gap-4">
-            <button (click)="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
-                <i [class]="themeService.isDarkMode() ? 'fa-solid fa-moon text-primary-hover text-lg' : 'fa-solid fa-sun text-yellow-500 text-lg'"></i>
+            <button
+                (click)="toggleDarkMode()"
+                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
+                aria-label="Toggle Dark Mode"
+            >
+                <i
+                    [class]="
+                        themeService.isDarkMode()
+                            ? 'fa-solid fa-moon text-primary-hover text-lg'
+                            : 'fa-solid fa-sun text-yellow-500 text-lg'
+                    "
+                ></i>
             </button>
             <app-social-media />
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <div class="md:hidden flex items-center gap-4">
-            <button (click)="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer" aria-label="Toggle Dark Mode">
-                <i [class]="themeService.isDarkMode() ? 'fa-solid fa-moon text-primary-hover text-lg' : 'fa-solid fa-sun text-yellow-500 text-lg'"></i>
+            <button
+                (click)="toggleDarkMode()"
+                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
+                aria-label="Toggle Dark Mode"
+            >
+                <i
+                    [class]="
+                        themeService.isDarkMode()
+                            ? 'fa-solid fa-moon text-primary-hover text-lg'
+                            : 'fa-solid fa-sun text-yellow-500 text-lg'
+                    "
+                ></i>
             </button>
-            <button (click)="toggleMobileMenu()" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-hover transition-colors text-2xl" aria-label="Toggle Mobile Menu">
-                <i [class]="isMobileMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+            <button
+                (click)="toggleMobileMenu()"
+                class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-hover transition-colors text-2xl"
+                aria-label="Toggle Mobile Menu"
+            >
+                <i
+                    [class]="
+                        isMobileMenuOpen
+                            ? 'fa-solid fa-xmark'
+                            : 'fa-solid fa-bars'
+                    "
+                ></i>
             </button>
         </div>
     </div>
 
     <!-- Mobile Menu Overlay -->
     @if (isMobileMenuOpen) {
-        <div class="md:hidden flex flex-col gap-4 mt-4 py-4 border-t border-gray-200 dark:border-gray-800 animate-fade-in-up">
+        <div
+            class="md:hidden flex flex-col gap-4 mt-4 py-4 border-t border-gray-200 dark:border-gray-800 animate-fade-in-up"
+        >
             @for (item of menuItems; track item.label) {
                 <a
                     class="block text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-hover transition-colors px-2"
@@ -53,7 +91,9 @@
                     {{ item.label }}
                 </a>
             }
-            <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800 px-2 flex justify-center">
+            <div
+                class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800 px-2 flex justify-center"
+            >
                 <app-social-media />
             </div>
         </div>

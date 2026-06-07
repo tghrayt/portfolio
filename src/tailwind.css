@@ -2,22 +2,31 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: var(--color-blue-600);
-  --color-primary-hover: var(--color-blue-700);
-  --color-secondary: var(--color-teal-500);
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+    --color-primary: var(--color-blue-600);
+    --color-primary-hover: var(--color-blue-700);
+    --color-secondary: var(--color-teal-500);
+    --font-sans:
+        'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
 }
 
 @layer base {
-  html, body {
-    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased;
-    height: 100%;
-    margin: 0;
-  }
+    html,
+    body {
+        @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased;
+        height: 100%;
+        margin: 0;
+    }
 }
 
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -1,13 +1,32 @@
 <div class="flex flex-col items-center justify-center gap-10 mt-16">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100">What I Do</h2>
+    <h2
+        class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100"
+    >
+        What I Do
+    </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         @for (item of whatIDoItems; track item.title) {
-            <div class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center">
-                <div class="w-16 h-16 rounded-full bg-blue-50 dark:bg-slate-700 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-100 dark:group-hover:bg-slate-600 transition-all duration-300">
-                    <i [class]="item.icon + ' fa-2x text-blue-600 dark:text-blue-400'"></i>
+            <div
+                class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center"
+            >
+                <div
+                    class="w-16 h-16 rounded-full bg-blue-50 dark:bg-slate-700 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-100 dark:group-hover:bg-slate-600 transition-all duration-300"
+                >
+                    <i
+                        [class]="
+                            item.icon +
+                            ' fa-2x text-blue-600 dark:text-blue-400'
+                        "
+                    ></i>
                 </div>
-                <h3 class="text-xl font-bold mb-3 text-slate-800 dark:text-white">{{ item.title }}</h3>
-                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">{{ item.description }}</p>
+                <h3
+                    class="text-xl font-bold mb-3 text-slate-800 dark:text-white"
+                >
+                    {{ item.title }}
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {{ item.description }}
+                </p>
             </div>
         }
     </div>

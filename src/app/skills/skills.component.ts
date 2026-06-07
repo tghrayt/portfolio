@@ -13,8 +13,10 @@ export class SkillsComponent implements OnInit {
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.dataService.loadData<SkillCategory[]>('skills').subscribe((data) => {
-            this.skillCategories = data;
-        });
+        this.dataService
+            .loadData<SkillCategory[]>('skills')
+            .subscribe((data) => {
+                this.skillCategories = data;
+            });
     }
 }
