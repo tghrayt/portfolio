@@ -66,7 +66,7 @@ Remove it to clean up the class body.
 
 ---
 
-### Task 5 — Remove empty `imports: []` in `ExperienceComponent`
+### Task 5 — Remove empty `imports: []` in `ExperienceComponent` ✅ COMPLETED
 **Dead code range:**
 ```
 (src/app/experience/experience.component.ts:8):(src/app/experience/experience.component.ts:8)
@@ -76,7 +76,7 @@ Remove it from the decorator options.
 
 ---
 
-### Task 6 — Remove empty `imports: []` in `SocialMediaComponent`
+### Task 6 — Remove empty `imports: []` in `SocialMediaComponent` ✅ COMPLETED
 **Dead code range:**
 ```
 (src/app/social-media/social-media.component.ts:7):(src/app/social-media/social-media.component.ts:7)
@@ -86,7 +86,7 @@ Remove it from the decorator options.
 
 ---
 
-### Task 7 — Fix incorrect generic type in `WhatIDoComponent`
+### Task 7 — Fix incorrect generic type in `WhatIDoComponent` ✅ COMPLETED
 **Dead code range:**
 ```
 (src/app/what-i-do/what-i-do.component.ts:16):(src/app/what-i-do/what-i-do.component.ts:16)
@@ -105,6 +105,6 @@ Tasks can be run independently in any order. Suggested order:
 2. ~~Task 2 (delete boilerplate spec)~~ ✅
 3. ~~Task 3 (remove unused property)~~ ✅
 4. ~~Task 4 (remove empty constructor)~~ ✅
-5. Task 5 (remove empty imports array — Experience)
-6. Task 6 (remove empty imports array — SocialMedia)
-7. Task 7 (fix type annotation)
+5. ~~Task 5 (remove empty imports array — Experience)~~ ✅
+6. ~~Task 6 (remove empty imports array — SocialMedia)~~ ✅
+7. ~~Task 7 (fix type annotation)~~ ✅

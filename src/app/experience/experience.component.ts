@@ -5,7 +5,6 @@ import { ExperienceItem } from '../dto/ExperienceItem';
 
 @Component({
     selector: 'app-experience',
-    imports: [],
     templateUrl: './experience.component.html',
 })
 export class ExperienceComponent implements OnInit {
