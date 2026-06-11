@@ -46,7 +46,7 @@ It does not test any actual logic in `ThemeService`. Remove it to reduce noise.
 
 ---
 
-### Task 3 — Remove unused `title` property in `AppComponent`
+### Task 3 — Remove unused `title` property in `AppComponent` ✅ COMPLETED
 **Dead code range:**
 ```
 (src/app/app.component.ts:12):(src/app/app.component.ts:12)
@@ -56,7 +56,7 @@ template (`app.component.html`) or anywhere else. Delete this line.
 
 ---
 
-### Task 4 — Remove empty constructor in `FooterComponent`
+### Task 4 — Remove empty constructor in `FooterComponent` ✅ COMPLETED
 **Dead code range:**
 ```
 (src/app/footer/footer.component.ts:12):(src/app/footer/footer.component.ts:12)
@@ -103,8 +103,8 @@ Tasks can be run independently in any order. Suggested order:
 
 1. ~~Task 1 (delete dead file)~~ ✅
 2. ~~Task 2 (delete boilerplate spec)~~ ✅
-3. Task 3 (remove unused property)
-4. Task 4 (remove empty constructor)
+3. ~~Task 3 (remove unused property)~~ ✅
+4. ~~Task 4 (remove empty constructor)~~ ✅
 5. Task 5 (remove empty imports array — Experience)
 6. Task 6 (remove empty imports array — SocialMedia)
 7. Task 7 (fix type annotation)

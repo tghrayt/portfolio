@@ -8,6 +8,4 @@ import { SocialMediaComponent } from '../social-media/social-media.component';
 })
 export class FooterComponent {
     currentYear: number = new Date().getFullYear();
-
-    constructor() {}
 }

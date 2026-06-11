@@ -9,5 +9,4 @@ import { FooterComponent } from './footer/footer.component';
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    title = 'dilanka-rathnasiri-portfolio';
 }
