@@ -326,24 +326,38 @@ Create the overview table or card grid that shows the main themes and the size o
 Explain what PrimeNG was, why it was removed, and what replaced it in the app.
 Include one clear before/after example.
 
+**Status:** Completed. Added a PrimeNG removal section explaining the dependency removal, replacement approach, before/after card markup, and affected files.
+
 ### Task 6 — Write the Tailwind CSS explanation
 Add a dedicated section that explains what Tailwind CSS is, how the app uses it, and what the classes are doing in practice.
 Use the app's real class names and keep the explanation plain and direct.
 
+**Status:** Completed. Added the Tailwind CSS explanation section (Theme 2) to the HTML file including before/after examples, key utility class definitions, and backend analogies.
+
 ### Task 7 — Write the dark mode explanation
 Explain the `ThemeService`, the toggle flow, and the `dark:` CSS behavior with a simple step-by-step walkthrough.
+
+**Status:** Completed. Added the Dark Mode explanation section (Theme 3) to the HTML file including a step-by-step interactive diagram, code walkthrough of `theme.service.ts`, and explanation of Angular signals and Tailwind's class toggling.
 
 ### Task 8 — Write the design overhaul explanation
 Describe the new visual patterns used across the app and explain the important Tailwind patterns one by one.
 
+**Status:** Completed. Added the Design & Layout Overhaul explanation section (Theme 4) to the HTML file describing glassmorphism, gradient headers, hover micro-interactions, group hovers, vertical timeline logic, and the recursive AboutMe typewriter timer.
+
 ### Task 9 — Write the responsive design explanation
 Explain the mobile-first breakpoints, menu toggle behavior, and responsive grid changes.
+
+**Status:** Completed. Added the Responsive Design explanation section (Theme 5) to the HTML file describing mobile-first layouts, breakpoint suffixes, multi-column fluid grid layouts, and the Angular-controlled mobile hamburger drawer.
 
 ### Task 10 — Write the cleanup explanation
 List the dead code and type cleanup changes with short reasons for each one.
 
+**Status:** Completed. Added the Code Cleanup explanation section (Theme 6) to the HTML file listing deleted files, unused metadata properties, unused imports, and detailing the migration from generic `any[]` array signatures to strongly-typed TypeScript DTO interfaces.
+
 ### Task 11 — Add the glossary and file index
 Add a compact glossary for the Angular and Tailwind terms used on the page, then add the file change index at the end.
+
+**Status:** Completed. Added the Glossary and File Change Index sections to the HTML file containing definitions for major Angular and Tailwind keywords mapped to backend concepts, and a categorized registry of all 39 modified/deleted/created files.
 
 ### Task 12 — Add inline styling and reading aids
 Implement the final HTML styling, navigation, collapsible sections, code highlighting, and layout details that make the page easy to scan.
