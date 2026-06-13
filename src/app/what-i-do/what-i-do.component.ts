@@ -13,8 +13,10 @@ export class WhatIDoComponent implements OnInit {
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.dataService.loadData<WhatIDoItem[]>('what-i-do').subscribe((data) => {
-            this.whatIDoItems = data;
-        });
+        this.dataService
+            .loadData<WhatIDoItem[]>('what-i-do')
+            .subscribe((data) => {
+                this.whatIDoItems = data;
+            });
     }
 }

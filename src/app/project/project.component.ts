@@ -6,6 +6,7 @@ import { ProjectItem } from '../dto/ProjectItem';
 @Component({
     selector: 'app-project',
     templateUrl: './project.component.html',
+    imports: [],
 })
 export class ProjectComponent implements OnInit {
     projects: ProjectItem[] = [];
