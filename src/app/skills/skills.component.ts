@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { SkillCategory } from '../dto/SkillItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-skills',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './skills.component.html',
 })
 export class SkillsComponent implements OnInit {

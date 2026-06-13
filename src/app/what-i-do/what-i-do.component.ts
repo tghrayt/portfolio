@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { WhatIDoItem } from '../dto/WhatIDoItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-what-i-do',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './what-i-do.component.html',
 })
 export class WhatIDoComponent implements OnInit {

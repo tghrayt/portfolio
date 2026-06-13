@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BlogItem } from '../dto/BlogItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-blog',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './blog.component.html',
 })
 export class BlogComponent implements OnInit {

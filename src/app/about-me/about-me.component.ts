@@ -1,10 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    OnDestroy,
+    ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
     selector: 'app-about-me',
     imports: [NgOptimizedImage],
     templateUrl: './about-me.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styles: [
         `
             .cursor {

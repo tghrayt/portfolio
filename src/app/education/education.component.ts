@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 import { EducationItem } from '../dto/EducationItem';
 
 @Component({
     selector: 'app-education',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './education.component.html',
 })
 export class EducationComponent implements OnInit {

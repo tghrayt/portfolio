@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CertificateItem } from '../dto/CertificateItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-certifications',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './certifications.component.html',
 })
 export class CertificationsComponent implements OnInit {

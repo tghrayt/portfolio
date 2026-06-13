@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DataService } from '../services/data.service';
 
 import { ProjectItem } from '../dto/ProjectItem';
@@ -6,6 +6,7 @@ import { ProjectItem } from '../dto/ProjectItem';
 @Component({
     selector: 'app-project',
     templateUrl: './project.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [],
 })
 export class ProjectComponent implements OnInit {
