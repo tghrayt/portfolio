@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
-
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CertificateItem } from '../dto/CertificateItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-certifications',
-    imports: [CardModule, ButtonModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './certifications.component.html',
 })
 export class CertificationsComponent implements OnInit {

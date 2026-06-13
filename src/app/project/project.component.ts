@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
 
 import { ProjectItem } from '../dto/ProjectItem';
 
 @Component({
     selector: 'app-project',
-    imports: [CardModule, ButtonModule],
     templateUrl: './project.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [],
 })
 export class ProjectComponent implements OnInit {
     projects: ProjectItem[] = [];

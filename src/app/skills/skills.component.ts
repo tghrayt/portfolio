@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { CardModule } from 'primeng/card';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { SkillItem } from '../dto/SkillItem';
+import { SkillCategory } from '../dto/SkillItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-skills',
-    imports: [CardModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './skills.component.html',
 })
 export class SkillsComponent implements OnInit {
-    skillsItems: SkillItem[] = [];
+    skillCategories: SkillCategory[] = [];
 
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.dataService.loadData<any[]>('skills').subscribe((data) => {
-            this.skillsItems = data;
-        });
+        this.dataService
+            .loadData<SkillCategory[]>('skills')
+            .subscribe((data) => {
+                this.skillCategories = data;
+            });
     }
 }

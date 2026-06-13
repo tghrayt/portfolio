@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ExperienceComponent } from '../experience/experience.component';
 import { CertificationsComponent } from '../certifications/certifications.component';
 import { WhatIDoComponent } from '../what-i-do/what-i-do.component';
@@ -16,6 +16,7 @@ import { EducationComponent } from '../education/education.component';
         SkillsComponent,
         EducationComponent,
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './home.component.html',
 })
 export class HomeComponent {}

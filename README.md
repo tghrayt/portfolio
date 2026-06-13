@@ -1,6 +1,6 @@
 # Dilanka Rathnasiri – Portfolio
 
-A modern Angular portfolio to showcase my projects and skills as a developer, built with PrimeNG and Tailwind CSS.
+A modern Angular portfolio to showcase my projects and skills as a developer, built with Tailwind CSS.
 
 **Web:** https://dilanka-rathnasiri.github.io/portfolio
 
@@ -11,7 +11,6 @@ I built this simple web app to present my work and technical background professi
 ## Tech Stack
 
 - **Framework:** [Angular](https://angular.dev/)
-- **UI Components & Theme:** [PrimeNG](https://primeng.org/) with a custom Aura-based preset (`@primeuix/themes`)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Deployment:** [GitHub Pages](https://pages.github.com/)
 

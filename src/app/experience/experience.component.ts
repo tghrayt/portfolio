@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CardModule } from 'primeng/card';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 import { ExperienceItem } from '../dto/ExperienceItem';
 
 @Component({
     selector: 'app-experience',
-    imports: [CardModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './experience.component.html',
 })
 export class ExperienceComponent implements OnInit {

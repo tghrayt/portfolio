@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CardModule } from 'primeng/card';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { WhatIDoItem } from '../dto/WhatIDoItem';
 import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-what-i-do',
-    imports: [CardModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './what-i-do.component.html',
 })
 export class WhatIDoComponent implements OnInit {
@@ -15,8 +14,10 @@ export class WhatIDoComponent implements OnInit {
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.dataService.loadData<any[]>('what-i-do').subscribe((data) => {
-            this.whatIDoItems = data;
-        });
+        this.dataService
+            .loadData<WhatIDoItem[]>('what-i-do')
+            .subscribe((data) => {
+                this.whatIDoItems = data;
+            });
     }
 }

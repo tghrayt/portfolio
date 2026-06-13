@@ -1,22 +1,54 @@
-<div class="px-16 flex flex-wrap gap-7 justify-center mt-7">
-    @for (project of projects; track project.title) {
-        <p-card
-            [header]="project.title"
-            [subheader]="project.description"
-            class="border border-zinc-400 drop-shadow-xl/20 text-center min-w-100 max-w-100"
-        >
-            <ng-template pTemplate="footer">
-                <a
-                    [href]="project.link"
-                    target="_blank"
-                    rel="noopener noreferrer"
+<div
+    class="px-6 md:px-12 lg:px-16 flex flex-col items-center gap-10 mt-16 mb-16 w-full"
+>
+    <h2
+        class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100"
+    >
+        Projects
+    </h2>
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl"
+    >
+        @for (project of projects; track project.title) {
+            <div
+                class="group flex flex-col bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 dark:border-slate-700"
+            >
+                <!-- Abstract Top Banner -->
+                <div
+                    class="h-32 bg-gradient-to-r from-blue-500 to-cyan-500 relative overflow-hidden"
                 >
-                    <p-button
-                        icon="fa-brands fa-github"
-                        label="View on Github"
-                    ></p-button>
-                </a>
-            </ng-template>
-        </p-card>
-    }
+                    <div
+                        class="absolute inset-0 bg-white/20 dark:bg-black/20 mix-blend-overlay"
+                    ></div>
+                    <i
+                        class="fa-solid fa-code absolute -bottom-3 -right-3 text-9xl text-white/20 group-hover:scale-110 transition-transform duration-500"
+                    ></i>
+                </div>
+
+                <!-- Content -->
+                <div class="flex flex-col grow p-6">
+                    <h3
+                        class="text-2xl font-bold text-slate-800 dark:text-white mb-3 line-clamp-2"
+                    >
+                        {{ project.title }}
+                    </h3>
+                    <p
+                        class="text-slate-600 dark:text-slate-300 mb-6 grow line-clamp-4"
+                    >
+                        {{ project.description }}
+                    </p>
+
+                    <a
+                        [href]="project.link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-auto inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white font-medium rounded-xl transition-colors"
+                    >
+                        View Source
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
 </div>

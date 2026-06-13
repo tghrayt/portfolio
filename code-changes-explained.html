@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Changes Explained</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f172a;
+      --panel: rgba(15, 23, 42, 0.72);
+      --panel-strong: rgba(30, 41, 59, 0.84);
+      --border: rgba(148, 163, 184, 0.22);
+      --text: #e5e7eb;
+      --muted: #a7b0c0;
+      --soft: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-strong: #22c55e;
+      --warning: #facc15;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 30rem),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 12px 0;
+      backdrop-filter: blur(14px);
+    }
+
+    .top-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--soft);
+      text-decoration: none;
+      background: rgba(15, 23, 42, 0.68);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero {
+      display: grid;
+      gap: 28px;
+      padding: 64px 0 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: var(--soft);
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .stat-card,
+    .guide-card,
+    .overview,
+    .theme-section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 24px 70px rgba(2, 6, 23, 0.28);
+    }
+
+    .stat-card {
+      padding: 18px;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.85rem;
+      line-height: 1.1;
+    }
+
+    .stat-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .guide-card {
+      padding: 28px;
+      background: var(--panel-strong);
+    }
+
+    .section-label {
+      margin: 0 0 8px;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      line-height: 1.15;
+    }
+
+    .guide-card > p {
+      max-width: 780px;
+      margin: 14px 0 0;
+      color: var(--soft);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      min-height: 100%;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.58);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      color: #082f49;
+      background: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .steps strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .steps span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .note {
+      margin: 22px 0 0;
+      padding: 14px 16px;
+      border-left: 3px solid var(--warning);
+      border-radius: 8px;
+      color: var(--soft);
+      background: rgba(250, 204, 21, 0.08);
+    }
+
+    .overview {
+      margin-top: 28px;
+      padding: 28px;
+      background: rgba(15, 23, 42, 0.76);
+    }
+
+    .overview > p,
+    .theme-section > p {
+      max-width: 780px;
+      margin: 14px 0 0;
+      color: var(--soft);
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .theme-card {
+      min-height: 100%;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(30, 41, 59, 0.64);
+    }
+
+    .theme-card h3 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.06rem;
+      line-height: 1.25;
+    }
+
+    .theme-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .theme-count {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-bottom: 14px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #042f2e;
+      background: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .state-box {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.38);
+    }
+
+    .state-box h3 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .state-box ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--soft);
+    }
+
+    .state-box li + li {
+      margin-top: 6px;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .theme-section {
+      margin-top: 28px;
+      padding: 28px;
+      background: rgba(15, 23, 42, 0.76);
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(30, 41, 59, 0.58);
+    }
+
+    .explain-card h3,
+    .code-panel h3 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .code-comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .code-panel {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.46);
+    }
+
+    pre {
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre;
+      color: #e2e8f0;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .hl-keyword { color: #f43f5e; font-weight: 500; }
+    .hl-string { color: #34d399; }
+    .hl-tag { color: #38bdf8; }
+    .hl-attr { color: #fb923c; }
+    .hl-comment { color: #64748b; font-style: italic; }
+    .hl-type { color: #c084fc; }
+    .hl-add { background: rgba(52, 211, 153, 0.12); border-left: 3px solid #34d399; padding-left: 4px; display: block; }
+    .hl-del { background: rgba(248, 113, 113, 0.12); border-left: 3px solid #f87171; padding-left: 4px; display: block; }
+
+    .code-note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    details {
+      margin-top: 22px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.34);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .file-list {
+      columns: 2;
+      margin: 0;
+      padding: 0 16px 16px 36px;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .file-list li {
+      break-inside: avoid;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+        padding-top: 18px;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .stats,
+      .steps,
+      .theme-grid,
+      .before-after,
+      .explain-grid,
+      .code-comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        min-height: 28px;
+        transform: rotate(90deg);
+      }
+
+      .file-list {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav" aria-label="Page sections">
+      <a href="#intro">Intro</a>
+      <a href="#readability-guide">Reading Guide</a>
+      <a href="#overview">Overview</a>
+      <a href="#primeng-removal">PrimeNG</a>
+      <a href="#tailwind-css">Tailwind CSS</a>
+      <a href="#dark-mode">Dark Mode</a>
+      <a href="#design-overhaul">Design Overhaul</a>
+      <a href="#responsive-design">Responsive</a>
+      <a href="#code-cleanup">Code Cleanup</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#file-index">File Index</a>
+    </nav>
+
+    <header id="intro" class="hero">
+      <div>
+        <p class="eyebrow">Portfolio modernization walkthrough</p>
+        <h1>Code Changes Explained</h1>
+        <p class="subtitle">
+          This page explains every code change made after commit <code>72520e3b</code>.
+          It is written for a backend developer who knows Java and Spring Boot well,
+          with only basic Angular and CSS knowledge.
+        </p>
+      </div>
+
+      <section class="stats" aria-label="Change set quick stats">
+        <article class="stat-card">
+          <strong>12</strong>
+          <span>commits in the change set</span>
+        </article>
+        <article class="stat-card">
+          <strong>39</strong>
+          <span>files changed after <code>72520e3b</code></span>
+        </article>
+        <article class="stat-card">
+          <strong>6</strong>
+          <span>reader-facing themes to understand</span>
+        </article>
+      </section>
+    </header>
+
+    <section id="readability-guide" class="guide-card" aria-labelledby="readability-guide-title">
+      <p class="section-label">How to read this page</p>
+      <h2 id="readability-guide-title">Start with the story, then use the file details as reference.</h2>
+      <p>
+        The page is organized like a guided code review. It starts with the big picture,
+        then explains each implementation theme in the order the ideas build on each other:
+        remove PrimeNG, use Tailwind, add dark mode, redesign the layout, make it responsive,
+        and clean up the code.
+      </p>
+
+      <ol class="steps">
+        <li>
+          <span class="step-number">1</span>
+          <strong>Read the overview first</strong>
+          <span>Use it to understand what changed before looking at individual files.</span>
+        </li>
+        <li>
+          <span class="step-number">2</span>
+          <strong>Follow the six themes in order</strong>
+          <span>Each theme explains the intent, the important files, and the practical effect.</span>
+        </li>
+        <li>
+          <span class="step-number">3</span>
+          <strong>Use the glossary and file index last</strong>
+          <span>They are lookup sections, similar to an appendix in technical documentation.</span>
+        </li>
+      </ol>
+
+      <p class="note">
+        Angular and Tailwind terms are explained in plain language as they appear. When useful,
+        the explanations compare frontend concepts to backend ideas like services, configuration,
+        dependency removal, and typed DTOs.
+      </p>
+    </section>
+
+    <section id="overview" class="overview" aria-labelledby="overview-title">
+      <p class="section-label">Overview</p>
+      <h2 id="overview-title">Six themes explain the full change set.</h2>
+      <p>
+        The 39 changed files are easiest to understand by grouping them by intent.
+        Some files appear in more than one theme because a single component can be redesigned,
+        made responsive, and updated for dark mode in the same change set.
+      </p>
+
+      <div class="theme-grid" aria-label="Theme summary">
+        <article class="theme-card">
+          <span class="theme-count">19 files</span>
+          <h3>1. PrimeNG removal</h3>
+          <p>Removed PrimeNG packages, theme configuration, component imports, and PrimeNG-specific markup.</p>
+        </article>
+        <article class="theme-card">
+          <span class="theme-count">16 files</span>
+          <h3>2. Tailwind CSS in the app</h3>
+          <p>Moved layout, spacing, color, typography, and state styling into Tailwind utility classes.</p>
+        </article>
+        <article class="theme-card">
+          <span class="theme-count">15 files</span>
+          <h3>3. Dark mode support</h3>
+          <p>Added a theme service, navbar toggle, root <code>.dark</code> class behavior, and dark color variants.</p>
+        </article>
+        <article class="theme-card">
+          <span class="theme-count">16 files</span>
+          <h3>4. Design and layout overhaul</h3>
+          <p>Redesigned the portfolio with modern cards, timelines, gradients, hover states, and a cleaner page shell.</p>
+        </article>
+        <article class="theme-card">
+          <span class="theme-count">12 files</span>
+          <h3>5. Responsive and mobile support</h3>
+          <p>Added mobile-first spacing, responsive grids, and a hamburger menu for smaller screens.</p>
+        </article>
+        <article class="theme-card">
+          <span class="theme-count">9 files</span>
+          <h3>6. Code cleanup</h3>
+          <p>Removed dead code and unused imports while tightening data types for skill and service data.</p>
+        </article>
+      </div>
+
+      <div class="before-after" aria-label="Before and after summary">
+        <div class="state-box">
+          <h3>Before</h3>
+          <ul>
+            <li>PrimeNG components and theme setup controlled many UI surfaces.</li>
+            <li>Styling was split between library defaults and app-level CSS.</li>
+            <li>The layout had limited dark mode and mobile behavior.</li>
+          </ul>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="state-box">
+          <h3>After</h3>
+          <ul>
+            <li>Native Angular templates use Tailwind classes directly.</li>
+            <li>A shared theme service controls light and dark mode.</li>
+            <li>Sections use responsive grids, timelines, cards, and cleaner typed data.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="primeng-removal" class="theme-section" aria-labelledby="primeng-removal-title">
+      <p class="section-label">Theme 1</p>
+      <h2 id="primeng-removal-title">PrimeNG was removed and replaced with native HTML plus Tailwind.</h2>
+      <p>
+        PrimeNG is a third-party Angular UI component library. It provides ready-made components
+        such as cards and buttons, similar to using a backend starter dependency that gives you
+        common behavior out of the box. In this change set, the app stops depending on PrimeNG for
+        visual structure and styles each section directly.
+      </p>
+
+      <div class="explain-grid">
+        <article class="explain-card">
+          <h3>What changed</h3>
+          <p>
+            The <code>primeng</code> and <code>@primeuix/themes</code> packages were removed,
+            along with the app-level PrimeNG provider and custom preset file.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Why it changed</h3>
+          <p>
+            Removing the library reduces dependency lock-in and gives the app full control over
+            layout, colors, dark mode, hover states, and responsive behavior.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>What replaced it</h3>
+          <p>
+            Components now use ordinary HTML elements such as <code>&lt;div&gt;</code>,
+            <code>&lt;a&gt;</code>, and <code>&lt;button&gt;</code>, styled with Tailwind classes.
+          </p>
+        </article>
+      </div>
+
+      <div class="code-comparison" aria-label="PrimeNG before and Tailwind after example">
+        <article class="code-panel">
+          <h3>Before: library card and button</h3>
+          <pre><code><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;p-card</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;ng-template</span><span class=<span class="hl-string">"hl-attr"</span>> pTemplate=</span><span class="hl-string">"header"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"blog-banner"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/ng-template</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;h3</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>{{ blog.title }}<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/h3</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;p</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>{{ blog.description }}<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/p</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;p-button</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> label=</span><span class="hl-string">"Read Article"</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> [link]=</span><span class="hl-string">"true"</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> [href]=</span><span class="hl-string">"blog.link"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/p-button</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/p-card</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></code></pre>
+          <p class="code-note">
+            The template depends on PrimeNG tags and PrimeNG template conventions.
+          </p>
+        </article>
+
+        <article class="code-panel">
+          <h3>After: native HTML and Tailwind</h3>
+          <pre><code><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span>
+ <span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"group flex flex-col bg-white dark:bg-slate-800
+         rounded-2xl overflow-hidden shadow-lg
+         hover:shadow-2xl hover:-translate-y-2
+         transition-all duration-300"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"h-32 bg-gradient-to-r from-purple-500 to-pink-500"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"flex flex-col grow p-6"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;h3</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"text-2xl font-bold text-slate-800 dark:text-white"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+      {{ blog.title }}
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/h3</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;p</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"text-slate-600 dark:text-slate-300 grow"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+      {{ blog.description }}
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/p</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;a</span><span class=<span class="hl-string">"hl-attr"</span>> [href]=</span><span class="hl-string">"blog.link"</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"mt-auto inline-flex justify-center py-3"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+      Read Article
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/a</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></code></pre>
+          <p class="code-note">
+            The structure is plain HTML. The visual behavior is visible in the class list.
+          </p>
+        </article>
+      </div>
+
+      <p class="note">
+        The important architectural change is ownership. Before, PrimeNG owned much of the component
+        behavior and theme styling. After, the Angular templates own the markup and Tailwind classes
+        describe the visual rules directly where the HTML is written.
+      </p>
+
+      <details>
+        <summary>Files touched by the PrimeNG removal</summary>
+        <ul class="file-list">
+          <li><code>package.json</code></li>
+          <li><code>package-lock.json</code></li>
+          <li><code>src/app/app.config.ts</code></li>
+          <li><code>src/app/custom-preset.ts</code></li>
+          <li><code>src/assets/icons/prime-svgrepo-com.svg</code></li>
+          <li><code>src/app/blog/blog.component.ts</code></li>
+          <li><code>src/app/blog/blog.component.html</code></li>
+          <li><code>src/app/certifications/certifications.component.ts</code></li>
+          <li><code>src/app/certifications/certifications.component.html</code></li>
+          <li><code>src/app/education/education.component.ts</code></li>
+          <li><code>src/app/education/education.component.html</code></li>
+          <li><code>src/app/experience/experience.component.ts</code></li>
+          <li><code>src/app/experience/experience.component.html</code></li>
+          <li><code>src/app/project/project.component.ts</code></li>
+          <li><code>src/app/project/project.component.html</code></li>
+          <li><code>src/app/skills/skills.component.ts</code></li>
+          <li><code>src/app/skills/skills.component.html</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.ts</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.html</code></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="tailwind-css" class="theme-section" aria-labelledby="tailwind-css-title">
+      <p class="section-label">Theme 2</p>
+      <h2 id="tailwind-css-title">Tailwind CSS became the primary styling mechanism.</h2>
+      <p>
+        Tailwind CSS is a utility-first CSS framework. Instead of writing separate CSS stylesheets with custom class names and style definitions (like a traditional stylesheet file), you write predefined utility classes directly in the HTML tags.
+      </p>
+
+      <div class="explain-grid">
+        <article class="explain-card">
+          <h3>What changed</h3>
+          <p>
+            App-wide styling was consolidated into <code>src/tailwind.css</code> using Tailwind's <code>@import</code>, theme tokens (under <code>@theme</code>), and custom base layers. Traditional CSS styles inside <code>src/styles.scss</code> were reduced to third-party imports (like FontAwesome).
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Why it changed</h3>
+          <p>
+            Consolidating styles in utility classes ensures visual consistency (by referencing standard values for margins, colors, etc.) and allows for rapid UI development without creating hundreds of lines of single-use custom CSS rules.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Backend Analogy</h3>
+          <p>
+            Think of custom CSS as writing raw SQL queries manually for every query. Tailwind CSS is like using Spring Boot annotations or custom properties — it's declarative, unified, and references central configuration variables.
+          </p>
+        </article>
+      </div>
+
+      <div class="code-comparison" aria-label="Traditional styling before vs Tailwind CSS styling after example">
+        <article class="code-panel">
+          <h3>Before: Ad-hoc/custom styling (About Me)</h3>
+          <pre><code><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"flex flex-wrap justify-center items-center gap-20 bg-blue-500 p-7"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;img</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> ngSrc=</span><span class="hl-string">"assets/dilanka.jpg"</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"border-white rounded-full shadow-lg border-5 profile-pic-img"</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> width=</span><span class="hl-string">"300"</span>
+   <span class=<span class="hl-string">"hl-attr"</span>> height=</span><span class="hl-string">"300"</span>
+  /<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></code></pre>
+          <p class="code-note">
+            Uses custom CSS styles like <code>.profile-pic-img</code> and <code>border-5</code>, and hardcoded backgrounds like <code>bg-blue-500</code>.
+          </p>
+        </article>
+
+        <article class="code-panel">
+          <h3>After: Consolidated Tailwind utility styling</h3>
+          <pre><code><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"relative w-full rounded-[2.5rem] overflow-hidden p-8
+            md:p-16 lg:p-20 shadow-2xl bg-white dark:bg-slate-900
+            transition-colors duration-500 grid md:grid-cols-2
+            gap-8 items-center border border-slate-100
+            dark:border-slate-800"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-comment"</span>>&lt;!-- Image container styled with relative layers and blur shadow --<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"relative z-10 flex justify-center order-1 md:order-2"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"absolute inset-0 bg-primary/20 blur-3xl rounded-full"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;img</span>
+     <span class=<span class="hl-string">"hl-attr"</span>> ngSrc=</span><span class="hl-string">"assets/dilanka.jpg"</span>
+     <span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"relative z-10 border-4 border-white dark:border-slate-800
+             rounded-full shadow-2xl object-cover"</span>
+     <span class=<span class="hl-string">"hl-attr"</span>> width=</span><span class="hl-string">"320"</span>
+     <span class=<span class="hl-string">"hl-attr"</span>> height=</span><span class="hl-string">"320"</span>
+    /<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></code></pre>
+          <p class="code-note">
+            Styling is fully declarative: <code>md:grid-cols-2</code> handles responsive layout, <code>dark:bg-slate-900</code> manages dark-mode background, and <code>bg-primary/20</code> references our custom theme token.
+          </p>
+        </article>
+      </div>
+
+      <div class="explain-grid" style="margin-top: 14px;">
+        <article class="explain-card" style="grid-column: span 3; background: rgba(30, 41, 59, 0.45);">
+          <h3 style="margin-bottom: 6px;">Key Utility Classes Used in this Project</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.7;">
+            <li><strong>Flexbox/Grid:</strong> <code>flex</code>, <code>grid</code>, <code>grid-cols-1 md:grid-cols-2</code> define structure. Spacing is controlled using <code>gap-8</code> and paddings like <code>p-8 md:p-16</code>.</li>
+            <li><strong>Responsive prefixes:</strong> Tailwind uses a mobile-first approach. A standard class like <code>p-8</code> applies to all screens, but a prefix like <code>md:p-16</code> overrides it for screens 768px and wider.</li>
+            <li><strong>State & Transition modifiers:</strong> Classes like <code>transition-all duration-500</code> animate CSS property updates. Modifiers like <code>hover:-translate-y-2</code> shift the element slightly upward on hover.</li>
+            <li><strong>Theme Tokens:</strong> <code>from-primary to-secondary</code> references the theme colors configured under the custom <code>@theme</code> directive in <code>src/tailwind.css</code>.</li>
+          </ul>
+        </article>
+      </div>
+
+      <details>
+        <summary>Files touched by the Tailwind CSS transition</summary>
+        <ul class="file-list">
+          <li><code>src/tailwind.css</code></li>
+          <li><code>src/styles.scss</code></li>
+          <li><code>src/index.html</code></li>
+          <li><code>tsconfig.json</code></li>
+          <li><code>src/app/app.component.html</code></li>
+          <li><code>src/app/about-me/about-me.component.html</code></li>
+          <li><code>src/app/blog/blog.component.html</code></li>
+          <li><code>src/app/certifications/certifications.component.html</code></li>
+          <li><code>src/app/education/education.component.html</code></li>
+          <li><code>src/app/experience/experience.component.html</code></li>
+          <li><code>src/app/footer/footer.component.html</code></li>
+          <li><code>src/app/nav-bar/nav-bar.component.html</code></li>
+          <li><code>src/app/project/project.component.html</code></li>
+          <li><code>src/app/skills/skills.component.html</code></li>
+          <li><code>src/app/social-media/social-media.component.html</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.html</code></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="dark-mode" class="theme-section" aria-labelledby="dark-mode-title">
+      <p class="section-label">Theme 3</p>
+      <h2 id="dark-mode-title">A unified theme service adds full dark mode support.</h2>
+      <p>
+        The application now has a toggle that lets users choose between light and dark themes. The system also automatically checks the user's OS preference if they haven't manually chosen a theme yet, and remembers their choice for future visits.
+      </p>
+
+      <div class="explain-grid">
+        <article class="explain-card">
+          <h3>How it works: State</h3>
+          <p>
+            An Angular service, <code>ThemeService</code>, manages the active state. This is similar to a singleton Configuration Bean in Spring Boot that reads initial config properties and provides live status updates.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Reactive Updates</h3>
+          <p>
+            The service uses Angular <strong>Signals</strong> (e.g. <code>isDarkMode = signal&lt;boolean&gt;(false)</code>). Think of a signal as a reactive Event publisher. When the theme state changes, UI listeners are instantly notified.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>The CSS Trigger</h3>
+          <p>
+            Tailwind triggers dark mode styles using the class prefix <code>dark:</code> (like <code>dark:bg-slate-900</code>). These styles apply to an element only when the ancestor <code>&lt;html&gt;</code> element has the class <code>.dark</code>.
+          </p>
+        </article>
+      </div>
+
+      <!-- Conceptual Flow Diagram -->
+      <div class="state-box" style="margin-top: 22px; text-align: center;">
+        <h3 style="margin-bottom: 14px;">The Dark Mode Toggle Flow</h3>
+        <div style="font-family: monospace; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; color: var(--accent); display: inline-block; text-align: left; padding: 14px; border: 1px dashed var(--border); border-radius: 8px; background: rgba(15, 23, 42, 0.42);">
+[User Clicks Sun/Moon Button]
+        │
+        ▼
+(click)="toggleDarkMode()" on NavBarComponent
+        │
+        ▼
+Calls ThemeService.toggleTheme()
+        │
+        ▼
+Updates isDarkMode Signal & writes to LocalStorage (Cache)
+        │
+        ▼
+Adds/Removes '.dark' class on Document Root (&lt;html&gt; element)
+        │
+        ▼
+[CSS Layer Reacts] -> Tailwind dark: classes activate automatically
+        </div>
+      </div>
+
+      <div class="code-comparison" aria-label="ThemeService code walkthrough">
+        <article class="code-panel" style="grid-column: span 2;">
+          <h3>Walkthrough: Annotated ThemeService (<code>theme.service.ts</code>)</h3>
+          <pre><code><span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>import</span> { Injectable, Inject, signal } from <span class="hl-<span class="hl-type">string</span>">'@angular/core'</span>;
+<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>import</span> { DOCUMENT } from <span class="hl-<span class="hl-type">string</span>">'@angular/common'</span>;
+
+<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>@Injectable</span>({
+  providedIn: <span class="hl-<span class="hl-type">string</span>">'root'</span>, <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// Singleton: Angular creates one shared instance of <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span> service (like <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>@Component</span> in Spring)</span>
+})
+<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>export</span> <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span> <span class="hl-type">ThemeService</span> {
+  <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// A reactive signal wrapping our <span class="hl-type">boolean</span> state. It defaults to false.</span>
+  isDarkMode = signal&lt;<span class="hl-type">boolean</span>&gt;(false);
+
+  constructor(<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>@Inject</span>(DOCUMENT) <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>private</span> document: <span class="hl-type">Document</span>) {
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.initializeTheme(); <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// Runs automatically when the application starts</span>
+  }
+
+  <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>private</span> initializeTheme(): <span class="hl-type">void</span> {
+    <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// 1. Check <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>if</span> the user previously selected a theme and saved it in browser cache</span>
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>const</span> savedTheme = localStorage.getItem(<span class="hl-<span class="hl-type">string</span>">'theme'</span>);
+    
+    <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// 2. Check <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>if</span> the user<span class="hl-<span class="hl-type">string</span>">'s Operating System prefers dark mode</span>
+    <span class="hl-keyword">const</span> prefersDark = <span class="hl-keyword">window</span>.matchMedia &&
+                        <span class="hl-keyword">window</span>.matchMedia('</span>(prefers-color-scheme: dark)<span class="hl-<span class="hl-type">string</span>">').matches;
+
+    <span <span class="hl-keyword">class</span>="hl-comment">// 3. Enable dark mode <span class="hl-keyword">if</span> user selected dark, or <span class="hl-keyword">if</span> they have no saved preference but the OS defaults to dark</span>
+    <span class="hl-keyword">if</span> (savedTheme === '</span>dark<span class="hl-<span class="hl-type">string</span>">' || (!savedTheme && prefersDark)) {
+      <span class="hl-keyword">this</span>.setDarkMode(true);
+    } <span class="hl-keyword">else</span> {
+      <span class="hl-keyword">this</span>.setDarkMode(false);
+    }
+  }
+
+  toggleTheme(): <span class="hl-type">void</span> {
+    <span class="hl-keyword">this</span>.setDarkMode(!<span class="hl-keyword">this</span>.isDarkMode()); <span <span class="hl-keyword">class</span>="hl-comment">// Flips the <span class="hl-type">boolean</span> state (reads via isDarkMode() getter)</span>
+  }
+
+  <span class="hl-keyword">private</span> setDarkMode(isDark: <span class="hl-type">boolean</span>): <span class="hl-type">void</span> {
+    <span class="hl-keyword">this</span>.isDarkMode.set(isDark); <span <span class="hl-keyword">class</span>="hl-comment">// Update the signal state</span>
+    
+    <span class="hl-keyword">if</span> (isDark) {
+      <span class="hl-keyword">this</span>.document.documentElement.classList.add('</span>dark<span class="hl-<span class="hl-type">string</span>">'); <span <span class="hl-keyword">class</span>="hl-comment">// Adds <html <span class="hl-keyword">class</span>="dark"></span>
+      localStorage.setItem('</span>theme<span class="hl-<span class="hl-type">string</span>">', '</span>dark<span class="hl-<span class="hl-type">string</span>">');               <span <span class="hl-keyword">class</span>="hl-comment">// Cache choice</span>
+    } <span class="hl-keyword">else</span> {
+      <span class="hl-keyword">this</span>.document.documentElement.classList.remove('</span>dark<span class="hl-<span class="hl-type">string</span>">'); <span <span class="hl-keyword">class</span>="hl-comment">// Removes <span class="hl-keyword">class</span></span>
+      localStorage.setItem('</span>theme<span class="hl-<span class="hl-type">string</span>">', '</span>light');
+    }
+  }
+}</code></pre>
+          <p class="code-note">
+            The service accesses the global document body to append the class, allowing Tailwind to intercept all <code>dark:</code> styles.
+          </p>
+        </article>
+      </div>
+
+      <details>
+        <summary>Files touched by the Dark Mode integration</summary>
+        <ul class="file-list">
+          <li><code>src/app/services/theme.service.ts</code></li>
+          <li><code>src/app/nav-bar/nav-bar.component.ts</code></li>
+          <li><code>src/app/nav-bar/nav-bar.component.html</code></li>
+          <li><code>src/tailwind.css</code></li>
+          <li><code>src/index.html</code></li>
+          <li><code>src/app/about-me/about-me.component.html</code></li>
+          <li><code>src/app/blog/blog.component.html</code></li>
+          <li><code>src/app/certifications/certifications.component.html</code></li>
+          <li><code>src/app/education/education.component.html</code></li>
+          <li><code>src/app/experience/experience.component.html</code></li>
+          <li><code>src/app/footer/footer.component.html</code></li>
+          <li><code>src/app/project/project.component.html</code></li>
+          <li><code>src/app/skills/skills.component.html</code></li>
+          <li><code>src/app/social-media/social-media.component.html</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.html</code></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="design-overhaul" class="theme-section" aria-labelledby="design-overhaul-title">
+      <p class="section-label">Theme 4</p>
+      <h2 id="design-overhaul-title">A complete visual and design overhaul modernizes the UI.</h2>
+      <p>
+        The entire portfolio has been redesigned using premium, modern UI visual trends. This replaces standard tables and generic cards with layout hierarchies, gradients, subtle micro-animations, and structured data blocks.
+      </p>
+
+      <div class="explain-grid">
+        <article class="explain-card" style="grid-column: span 3; background: rgba(30, 41, 59, 0.45);">
+          <h3>Core Visual Patterns Introduced</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.75;">
+            <li><strong>Glassmorphism (Frosted Glass panels):</strong> Creates container backgrounds using <code>bg-white/80 dark:bg-gray-900/80 backdrop-blur-md</code>. This overlays elements onto background gradients, maintaining high legibility while looking sleek and layered.</li>
+            <li><strong>Gradient text headers:</strong> Used on main titles like "Dilanka Rathnasiri". The combination of <code>bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary</code> clips a left-to-right color gradient directly onto the text outlines.</li>
+            <li><strong>Micro-interaction hover effects:</strong> Cards respond to user mouse hover dynamically using <code>hover:shadow-2xl hover:-translate-y-2 transition-all duration-300</code>. This promotes the card visually along the Z-axis by adding depth and translation.</li>
+            <li><strong>Group Hover:</strong> By marking a container card with the <code>group</code> class, child elements inside it can react when any part of that card is hovered (e.g. <code>group-hover:scale-110</code> to zoom an icon when hovering the card).</li>
+            <li><strong>Timeline layouts:</strong> The Experience and Education items are rendered on a clean vertical timeline. The layout places a vertical boundary border <code>border-l-2 relative</code>, and aligns absolute-positioned circular dots (<code>absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary</code>) directly over it.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="code-comparison" aria-label="Theme compilation and code logic">
+        <article class="code-panel">
+          <h3>Tailwind Theme Compilation (<code>src/tailwind.css</code>)</h3>
+          <pre><code><span class="hl-keyword">@theme</span> {
+  --color-primary: <span class="hl-string">var(--color-blue-600)</span>;
+  --color-primary-hover: <span class="hl-string">var(--color-blue-700)</span>;
+  --color-secondary: <span class="hl-string">var(--color-teal-500)</span>;
+  --font-sans: '<span class="hl-string">Inter</span>', <span class="hl-string">ui-sans-serif</span>, ...;
+  --animate-fade-in-up: <span class="hl-string">fade-in-up 0</span>.<span class="hl-string">8s ease-out forwards</span>;
+}
+
+<span class="hl-keyword">@layer</span> base {
+  html, body {
+    <span class="hl-keyword">@apply</span> bg-white text-gray-900 dark:<span class="hl-string">bg-gray-900
+           dark</span>:<span class="hl-string">text-gray-100 antialiased</span>;
+    height: <span class="hl-string">100</span>%;
+    margin: <span class="hl-string">0</span>;
+  }
+}</code></pre>
+          <p class="code-note">
+            The <code>@theme</code> directive compiles central tokens (similar to variables in a properties file). The <code>@layer base</code> injects standard default styles into Tailwind's global stylesheet layer.
+          </p>
+        </article>
+
+        <article class="code-panel">
+          <h3>Typing Animation Logic (<code>about-me.component.ts</code>)</h3>
+          <pre><code><span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>private</span> type() {
+  <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>const</span> currentFullTitle = <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.titles[<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.titleIndex];
+  
+  <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>if</span> (<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.isDeleting) {
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.currentTitle = currentFullTitle.substring(0, <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.charIndex - 1);
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.charIndex--;
+  } <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>else</span> {
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.currentTitle = currentFullTitle.substring(0, <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.charIndex + 1);
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.charIndex++;
+  }
+
+  <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>let</span> typeSpeed = <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.isDeleting ? 40 : 100;
+
+  <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>if</span> (!<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.isDeleting && <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.charIndex === currentFullTitle.length) {
+    typeSpeed = 2000; <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// Pause at end of word</span>
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.isDeleting = true;
+  } <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>else</span> <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>if</span> (<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.isDeleting && <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.charIndex === 0) {
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.isDeleting = false;
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.titleIndex = (<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.titleIndex + 1) % <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.titles.length;
+    typeSpeed = 500; <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// Pause before <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>new</span> word</span>
+  }
+
+  <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.typingTimer = <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>window</span>.<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>setTimeout</span>(() => <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.type(), typeSpeed);
+}</code></pre>
+          <p class="code-note">
+            Recursively schedules the typewriter effect. <code>ngOnDestroy()</code> executes <code>clearTimeout(this.typingTimer)</code> to prevent background memory leaks when navigating away.
+          </p>
+        </article>
+      </div>
+
+      <details>
+        <summary>Files touched by the design and layout overhaul</summary>
+        <ul class="file-list">
+          <li><code>src/index.html</code></li>
+          <li><code>src/tailwind.css</code></li>
+          <li><code>src/app/app.component.html</code></li>
+          <li><code>src/app/about-me/about-me.component.html</code></li>
+          <li><code>src/app/about-me/about-me.component.ts</code></li>
+          <li><code>src/app/experience/experience.component.html</code></li>
+          <li><code>src/app/education/education.component.html</code></li>
+          <li><code>src/app/skills/skills.component.html</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.html</code></li>
+          <li><code>src/app/project/project.component.html</code></li>
+          <li><code>src/app/blog/blog.component.html</code></li>
+          <li><code>src/app/certifications/certifications.component.html</code></li>
+          <li><code>src/app/footer/footer.component.html</code></li>
+          <li><code>src/app/nav-bar/nav-bar.component.html</code></li>
+          <li><code>src/assets/data/skills.json</code></li>
+          <li><code>src/app/dto/SkillItem.ts</code></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="responsive-design" class="theme-section" aria-labelledby="responsive-design-title">
+      <p class="section-label">Theme 5</p>
+      <h2 id="responsive-design-title">Layouts and spacing adapt to any screen size.</h2>
+      <p>
+        The application has transitioned to a fully responsive, mobile-first design. Spacing, text sizing, navigation controls, and grids dynamically adapt to screen sizes from small phones to large desktop displays.
+      </p>
+
+      <div class="explain-grid">
+        <article class="explain-card">
+          <h3>Mobile-First Approach</h3>
+          <p>
+            Standard styles (like <code>p-4</code> or <code>text-lg</code>) apply to mobile screens by default. Breakpoint prefixes like <code>md:</code> and <code>lg:</code> are added to override defaults only for screens at or above those sizes.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Responsive Grids</h3>
+          <p>
+            Cards are organized using fluid CSS Grid classes: <code>grid-cols-1 md:grid-cols-2 lg:grid-cols-3</code>. This displays one column on mobile, two columns on tablets, and three columns on wide screens.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Hamburger Overlay</h3>
+          <p>
+            The navigation menu collapses into a drawer on mobile screens. Angular control flow selectively loads the drawer, and Tailwind classes hide or show desktop menu items based on current screen size.
+          </p>
+        </article>
+      </div>
+
+      <div class="code-comparison" aria-label="Responsive layouts and logic">
+        <article class="code-panel">
+          <h3>Mobile Hamburger logic (<code>nav-bar.component.html</code>)</h3>
+          <pre><code><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-comment"</span>>&lt;!-- Mobile Hamburger Trigger --<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"md:hidden flex items-center gap-4"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;button</span><span class=<span class="hl-string">"hl-attr"</span>> (click)=</span><span class="hl-string">"toggleMobileMenu()"</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"text-2xl"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;i</span><span class=<span class="hl-string">"hl-attr"</span>> [class]=</span><span class="hl-string">"isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/i</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/button</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-comment"</span>>&lt;!-- Mobile Menu Overlay --<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></span>
+@if (isMobileMenuOpen) {
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"md:hidden flex flex-col gap-4 animate-fade-in-up"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    @for (item of menuItems; track item.label) {
+      <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;a</span><span class=<span class="hl-string">"hl-attr"</span>> [routerLink]=</span><span class="hl-string">"item.link"</span><span class=<span class="hl-string">"hl-attr"</span>> (click)=</span><span class="hl-string">"closeMobileMenu()"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+        {{ item.label }}
+      <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/a</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    }
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+}</code></pre>
+          <p class="code-note">
+            The class <code>md:hidden</code> hides the element on desktop screens. The Angular control flow block <code>@if (isMobileMenuOpen)</code> mounts the overlay when the hamburger state is toggled.
+          </p>
+        </article>
+
+        <article class="code-panel">
+          <h3>Dynamic Layout (<code>about-me.component.html</code>)</h3>
+          <pre><code><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"grid md:grid-cols-2 gap-8 items-center
+            p-8 md:p-16 lg:p-20"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-comment"</span>>&lt;!-- Text Content --<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"order-2 md:order-1"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;h1</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"text-4xl md:text-6xl font-bold"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+      Dilanka Rathnasiri
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/h1</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-comment"</span>>&lt;!-- Profile Image --<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;div</span><span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"order-1 md:order-2"</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+    <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;img</span> ... /<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+  <span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span>
+<span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&lt;/div</span><span<span class=<span class="hl-string">"hl-attr"</span>> class=</span><span class="hl-string">"hl-tag"</span>>&gt;</span></code></pre>
+          <p class="code-note">
+            Layout is a single column by default (mobile-first), but switches to a two-column grid on desktop (<code>md:grid-cols-2</code>). Spacing increases with screen width (<code>p-8 md:p-16 lg:p-20</code>), and the image shifts above the text on mobile screens using the <code>order-</code> utility classes.
+          </p>
+        </article>
+      </div>
+
+      <details>
+        <summary>Files touched by the Responsive Design adjustments</summary>
+        <ul class="file-list">
+          <li><code>src/app/nav-bar/nav-bar.component.ts</code></li>
+          <li><code>src/app/nav-bar/nav-bar.component.html</code></li>
+          <li><code>src/app/app.component.html</code></li>
+          <li><code>src/app/about-me/about-me.component.html</code></li>
+          <li><code>src/app/blog/blog.component.html</code></li>
+          <li><code>src/app/certifications/certifications.component.html</code></li>
+          <li><code>src/app/education/education.component.html</code></li>
+          <li><code>src/app/experience/experience.component.html</code></li>
+          <li><code>src/app/footer/footer.component.html</code></li>
+          <li><code>src/app/project/project.component.html</code></li>
+          <li><code>src/app/skills/skills.component.html</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.html</code></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="code-cleanup" class="theme-section" aria-labelledby="code-cleanup-title">
+      <p class="section-label">Theme 6</p>
+      <h2 id="code-cleanup-title">Code cleaning, refactoring, and type safety improvements.</h2>
+      <p>
+        Unused metadata configurations, redundant files, and dead class declarations were removed. In addition, weak variable definitions (the equivalent of raw types or Object arrays in Java) were tightened into strong TypeScript interfaces.
+      </p>
+
+      <div class="explain-grid">
+        <article class="explain-card">
+          <h3>Unused Imports & Metadata</h3>
+          <p>
+            Removed unused imports (like <code>NgOptimizedImage</code> in areas where it was no longer rendered) and stripped empty component metadata arrays (like <code>imports: []</code>) to clean up dependency trees.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Dead Code & Files</h3>
+          <p>
+            Unused variables (like <code>title</code> in <code>AppComponent</code>) and classes that no longer support components (like the PrimeNG <code>custom-preset.ts</code>) were deleted to reduce clutter.
+          </p>
+        </article>
+        <article class="explain-card">
+          <h3>Strict Type Definitions</h3>
+          <p>
+            Replaced loose, generic <code>any[]</code> types (similar to Java's raw <code>List</code>) with specific types (like <code>WhatIDoItem[]</code>). This enables compiling-time checks, IDE autocomplete, and prevents runtime field reference failures.
+          </p>
+        </article>
+      </div>
+
+      <div class="code-comparison" aria-label="Code cleaning examples">
+        <article class="code-panel">
+          <h3>Before: Weakly typed array retrieval</h3>
+          <pre><code><span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// what-i-do.component.ts</span>
+<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>export</span> <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span> WhatIDoComponent implements OnInit {
+  whatIDoItems: <span class="hl-type">any</span>[] = []; <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// raw array container</span>
+
+  ngOnInit() {
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.dataService
+      .loadData&lt;<span class="hl-type">any</span>[]&gt;(<span class="hl-<span class="hl-type">string</span>">'assets/data/what-i-do.json'</span>)
+      .subscribe((data) => {
+        <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.whatIDoItems = data;
+      });
+  }
+}</code></pre>
+          <p class="code-note">
+            The compiler does not know what properties reside inside the <code>whatIDoItems</code> array elements.
+          </p>
+        </article>
+
+        <article class="code-panel">
+          <h3>After: Strong type validation</h3>
+          <pre><code><span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// what-i-do.component.ts</span>
+<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>import</span> { WhatIDoItem } from <span class="hl-<span class="hl-type">string</span>">'../dto/WhatIDoItem'</span>;
+
+<span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>export</span> <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span> WhatIDoComponent implements OnInit {
+  whatIDoItems: WhatIDoItem[] = []; <span <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>class</span>=<span class="hl-<span class="hl-type">string</span>">"hl-comment"</span>>// Typed signature</span>
+
+  ngOnInit() {
+    <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.dataService
+      .loadData&lt;WhatIDoItem[]&gt;(<span class="hl-<span class="hl-type">string</span>">'assets/data/what-i-do.json'</span>)
+      .subscribe((data) => {
+        <span class=<span class="hl-<span class="hl-type">string</span>">"hl-keyword"</span>>this</span>.whatIDoItems = data;
+      });
+  }
+}</code></pre>
+          <p class="code-note">
+            Replacing <code>any[]</code> with <code>WhatIDoItem[]</code> locks in property rules (e.g. <code>title</code>, <code>icon</code>, <code>description</code>) and warns developers at build time if any key is missing or mistyped.
+          </p>
+        </article>
+      </div>
+
+      <details>
+        <summary>Files touched by Code Cleanup</summary>
+        <ul class="file-list">
+          <li><code>src/app/custom-preset.ts</code> (Deleted)</li>
+          <li><code>src/app/app.component.ts</code></li>
+          <li><code>src/app/footer/footer.component.ts</code></li>
+          <li><code>src/app/experience/experience.component.ts</code></li>
+          <li><code>src/app/social-media/social-media.component.ts</code></li>
+          <li><code>src/app/what-i-do/what-i-do.component.ts</code></li>
+          <li><code>src/app/skills/skills.component.ts</code></li>
+          <li><code>src/app/dto/SkillItem.ts</code></li>
+          <li><code>src/assets/data/skills.json</code></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="glossary" class="theme-section" aria-labelledby="glossary-title">
+      <p class="section-label">Glossary</p>
+      <h2 id="glossary-title">Quick reference for frontend terms.</h2>
+      <p>
+        Here is a breakdown of the Angular and Tailwind terms used in this walkthrough, mapped to familiar backend concepts where possible.
+      </p>
+
+      <div class="explain-grid" style="grid-template-columns: 1fr 1fr;">
+        <article class="explain-card">
+          <h3>Angular Core Terms</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.7;">
+            <li><strong><code>@Component</code>:</strong> A decorator that defines an interface component (class + HTML template + styles). Equivalent to a view controller.</li>
+            <li><strong><code>@Injectable</code>:</strong> A decorator declaring that a class is a service managed by Angular's dependency injection container (similar to Spring's <code>@Service</code> or <code>@Component</code>).</li>
+            <li><strong><code>signal</code>:</strong> A reactive wrapper containing a value that alerts the DOM template to re-render automatically when updated.</li>
+            <li><strong><code>inject()</code>:</strong> Modern method to perform constructor-less dependency injection (similar to <code>@Autowired</code> in Spring).</li>
+            <li><strong><code>OnInit / OnDestroy</code>:</strong> Lifecycle hooks that run when a component is initialized or destroyed (similar to <code>@PostConstruct</code> and <code>@PreDestroy</code>).</li>
+            <li><strong><code>@for ... track</code> / <code>@if</code>:</strong> Modern Angular template controls to render loops and conditional blocks.</li>
+            <li><strong><code>[class]</code> / <code>(click)</code>:</strong> Attribute bindings. <code>[class]</code> dynamically binds a CSS property; <code>(click)</code> registers an event listener callback.</li>
+          </ul>
+        </article>
+
+        <article class="explain-card">
+          <h3>Tailwind Core Terms</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.7;">
+            <li><strong><code>dark:</code>:</strong> Breakpoint modifier that applies the class only when the document root has the <code>.dark</code> class enabled.</li>
+            <li><strong><code>md: / lg:</code>:</strong> Breakpoint modifiers that apply classes at or above specific screen widths (768px and 1024px respectively) for responsive design.</li>
+            <li><strong><code>hover:</code>:</strong> State modifier that applies CSS overrides when the user hovers their mouse pointer over an element.</li>
+            <li><strong><code>group</code> / <code>group-hover:</code>:</strong> Allows styling child elements based on the hover state of a parent element flagged with <code>group</code>.</li>
+            <li><strong><code>transition-all</code>:</strong> Instructs the browser to smoothly animate property shifts (e.g. translation, scale, shadow changes).</li>
+            <li><strong><code>@layer</code>:</strong> Groups styles into buckets (like <code>base</code>) to manage specificity rules and compile ordering.</li>
+            <li><strong><code>@theme</code>:</strong> Directive to configure global style tokens (like primary/secondary colors) at compile time.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="file-index" class="theme-section" aria-labelledby="file-index-title">
+      <p class="section-label">Appendix</p>
+      <h2 id="file-index-title">File Change Index</h2>
+      <p>
+        A complete listing of every changed file after commit <code>72520e3b</code>, grouped by context, with a brief explanation of what changed.
+      </p>
+
+      <div class="state-box" style="margin-top: 22px;">
+        <h3 style="margin-bottom: 14px; border-b: 1px solid var(--border); padding-bottom: 6px;">Application Configuration & Packages</h3>
+        <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.8;">
+          <li><code>package.json</code>: Removed PrimeNG dependencies.</li>
+          <li><code>package-lock.json</code>: Updated package-lock dependencies.</li>
+          <li><code>tsconfig.json</code>: Added <code>rootDir: "."</code> to compile configuration.</li>
+          <li><code>src/index.html</code>: Loaded Inter font family; configured responsive default body styles.</li>
+          <li><code>src/styles.scss</code>: Removed redundant manual page margins and body resets.</li>
+          <li><code>src/tailwind.css</code>: Integrated Tailwind imports, custom dark mode variant, base layout rules, and theme variables.</li>
+        </ul>
+
+        <h3 style="margin-bottom: 14px; margin-top: 22px; border-b: 1px solid var(--border); padding-bottom: 6px;">App Shell & Services</h3>
+        <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.8;">
+          <li><code>src/app/app.config.ts</code>: Removed PrimeNG configuration setup providers.</li>
+          <li><code>src/app/app.component.html</code>: Restyled core template; added custom animations wrapper.</li>
+          <li><code>src/app/app.component.ts</code>: Cleaned up unused variables.</li>
+          <li><code>src/app/services/theme.service.ts</code>: Added state service utilizing signals to control light/dark class toggle.</li>
+        </ul>
+
+        <h3 style="margin-bottom: 14px; margin-top: 22px; border-b: 1px solid var(--border); padding-bottom: 6px;">Components</h3>
+        <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.8;">
+          <li><code>src/app/nav-bar/nav-bar.component.ts</code>: Injected the theme toggle trigger and added mobile hamburger drawer helper methods.</li>
+          <li><code>src/app/nav-bar/nav-bar.component.html</code>: Redesigned navigation bar with glassmorphic layout, theme toggle button, and mobile overlay drawer.</li>
+          <li><code>src/app/about-me/about-me.component.ts</code>: Added typing animator logic and destroyed schedules to prevent leaks.</li>
+          <li><code>src/app/about-me/about-me.component.html</code>: Modernized hero banner grid, overlay colors, and image structure.</li>
+          <li><code>src/app/what-i-do/what-i-do.component.ts</code>: Replaced <code>any[]</code> return signatures with strong typing interfaces.</li>
+          <li><code>src/app/what-i-do/what-i-do.component.html</code>: Restyled services showcase layout cards.</li>
+          <li><code>src/app/skills/skills.component.ts</code>: Upgraded logic to receive categorized skill list array payloads.</li>
+          <li><code>src/app/skills/skills.component.html</code>: Restyled flat layouts into grouped category tables using pill graphics.</li>
+          <li><code>src/app/experience/experience.component.ts</code>: Cleaned up unused imports.</li>
+          <li><code>src/app/experience/experience.component.html</code>: Restyled timeline elements using absolute relative layout overrides.</li>
+          <li><code>src/app/education/education.component.ts</code>: Removed card imports.</li>
+          <li><code>src/app/education/education.component.html</code>: Restyled traditional cards into vertical line nodes.</li>
+          <li><code>src/app/project/project.component.ts</code>: Removed card imports.</li>
+          <li><code>src/app/project/project.component.html</code>: Modernized grids using translation hover depth shifts.</li>
+          <li><code>src/app/blog/blog.component.ts</code>: Cleaned up PrimeNG dependencies.</li>
+          <li><code>src/app/blog/blog.component.html</code>: Restyled cards using custom gradients.</li>
+          <li><code>src/app/certifications/certifications.component.ts</code>: Cleaned up unused imports.</li>
+          <li><code>src/app/certifications/certifications.component.html</code>: Restyled grid cards with responsive badges.</li>
+          <li><code>src/app/social-media/social-media.component.ts</code>: Cleaned up metadata metadata arrays.</li>
+          <li><code>src/app/social-media/social-media.component.html</code>: Restyled link color utility classes.</li>
+          <li><code>src/app/footer/footer.component.ts</code>: Cleaned up unused image imports.</li>
+          <li><code>src/app/footer/footer.component.html</code>: Restyled footer glass panel layout.</li>
+        </ul>
+
+        <h3 style="margin-bottom: 14px; margin-top: 22px; border-b: 1px solid var(--border); padding-bottom: 6px;">Data & Interfaces</h3>
+        <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.8;">
+          <li><code>src/assets/data/skills.json</code>: Grouped flat list into structured categories.</li>
+          <li><code>src/app/dto/SkillItem.ts</code>: Updated interfaces representing structured data.</li>
+        </ul>
+
+        <h3 style="margin-bottom: 14px; margin-top: 22px; border-b: 1px solid var(--border); padding-bottom: 6px;">Removed Files</h3>
+        <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.8;">
+          <li><code>src/app/custom-preset.ts</code>: Deleted PrimeNG design tokens file.</li>
+          <li><code>src/assets/icons/prime-svgrepo-com.svg</code>: Deleted unused brand asset.</li>
+        </ul>
+
+        <h3 style="margin-bottom: 14px; margin-top: 22px; border-b: 1px solid var(--border); padding-bottom: 6px;">Planning & Documentation</h3>
+        <ul style="margin: 0; padding-left: 20px; color: var(--soft); line-height: 1.8;">
+          <li><code>.agent/plans/cleanup-plan.md</code>: Outlined code cleanup tasks.</li>
+          <li><code>.agent/plans/code_explain_html.md</code>: Planned the code changes walkthrough page.</li>
+          <li><code>.agent/plans/modernization_plan.md</code>: Modernization roadmap specifications.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
