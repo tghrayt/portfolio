@@ -2,47 +2,53 @@
     {
         "category": "Languages & Frameworks",
         "skills": [
-            { "name": "Java", "icon": "fa-brands fa-java text-red-500" },
-            { "name": "Python", "icon": "fa-brands fa-python text-blue-500" },
-            { "name": "Go", "icon": "fa-brands fa-golang text-cyan-500" },
+            { "name": "C#", "icon": "fa-solid fa-code text-purple-600" },
             {
-                "name": "Spring Boot",
-                "icon": "fa-solid fa-leaf text-green-500"
+                "name": ".NET Core",
+                "icon": "fa-brands fa-microsoft text-indigo-600"
             },
-            { "name": "FastAPI", "icon": "fa-solid fa-bolt text-teal-500" }
+            { "name": "Angular", "icon": "fa-brands fa-angular text-red-600" },
+            {
+                "name": "TypeScript",
+                "icon": "fa-solid fa-file-code text-blue-500"
+            }
         ]
     },
     {
-        "category": "Containers & Orchestration",
+        "category": "Architecture & Practices",
         "skills": [
             {
-                "name": "Kubernetes",
-                "icon": "fa-solid fa-dharmachakra text-blue-600"
+                "name": "Domain-Driven Design",
+                "icon": "fa-solid fa-diagram-project text-emerald-600"
             },
-            { "name": "Docker", "icon": "fa-brands fa-docker text-blue-400" },
             {
-                "name": "Amazon EKS",
+                "name": "Hexagonal Architecture",
+                "icon": "fa-solid fa-shapes text-emerald-500"
+            },
+            {
+                "name": "Microservices",
                 "icon": "fa-solid fa-cubes text-orange-400"
             },
             {
-                "name": "Amazon ECS",
-                "icon": "fa-solid fa-cube text-orange-400"
-            },
-            { "name": "Knative", "icon": "fa-solid fa-server text-blue-500" }
+                "name": "Unit & Load Testing",
+                "icon": "fa-solid fa-vial text-green-600"
+            }
         ]
     },
     {
         "category": "Cloud & DevOps",
         "skills": [
-            { "name": "AWS", "icon": "fa-brands fa-aws text-orange-500" },
             {
-                "name": "Terraform",
-                "icon": "fa-solid fa-cloud-arrow-up text-purple-500"
+                "name": "Azure DevOps",
+                "icon": "fa-solid fa-cloud text-blue-500"
             },
+            { "name": "Docker", "icon": "fa-brands fa-docker text-blue-400" },
+            { "name": "Jenkins", "icon": "fa-brands fa-jenkins text-red-500" },
             {
                 "name": "GitLab CI/CD",
                 "icon": "fa-brands fa-gitlab text-orange-600"
-            }
+            },
+            { "name": "Git", "icon": "fa-brands fa-git-alt text-orange-600" }
         ]
     },
     {
@@ -53,15 +59,18 @@
                 "icon": "fa-solid fa-exchange-alt text-slate-500"
             },
             {
-                "name": "Envoy Gateway",
-                "icon": "fa-solid fa-hexagon text-fuchsia-500"
+                "name": "Swagger",
+                "icon": "fa-solid fa-file-code text-green-600"
             },
-            { "name": "ApiDog", "icon": "fa-solid fa-bone text-blue-500" },
             {
-                "name": "PostgreSQL",
+                "name": "SQL Server",
                 "icon": "fa-solid fa-database text-blue-600"
             },
-            { "name": "Redis", "icon": "fa-solid fa-layer-group text-red-600" }
+            {
+                "name": "PostgreSQL",
+                "icon": "fa-solid fa-database text-sky-600"
+            },
+            { "name": "Oracle", "icon": "fa-solid fa-database text-red-600" }
         ]
     },
     {
@@ -71,11 +80,21 @@
                 "name": "Datadog",
                 "icon": "fa-solid fa-paw text-purple-600"
             },
-            { "name": "Fluent Bit", "icon": "fa-solid fa-dove text-cyan-500" },
             {
-                "name": "AWS CloudWatch",
-                "icon": "fa-solid fa-magnifying-glass-chart text-orange-500"
+                "name": "ELK Stack",
+                "icon": "fa-solid fa-magnifying-glass-chart text-yellow-600"
             }
+        ]
+    },
+    {
+        "category": "AI-Assisted Engineering",
+        "skills": [
+            { "name": "Claude", "icon": "fa-solid fa-robot text-violet-500" },
+            {
+                "name": "GitHub Copilot",
+                "icon": "fa-brands fa-github text-slate-700"
+            },
+            { "name": "Codex", "icon": "fa-solid fa-brain text-fuchsia-500" }
         ]
     }
 ]

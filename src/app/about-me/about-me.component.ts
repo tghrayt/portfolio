@@ -37,10 +37,10 @@ import { NgOptimizedImage } from '@angular/common';
 })
 export class AboutMeComponent implements OnInit, OnDestroy {
     titles: string[] = [
-        'Software Engineer',
-        'Backend Developer',
-        'Cloud Enthusiast',
-        'System Architect',
+        'Full-Stack Software Engineer',
+        '.NET & Angular Developer',
+        'Azure DevOps Enthusiast',
+        'Software Architecture',
     ];
     currentTitle: string = '';
     private titleIndex: number = 0;

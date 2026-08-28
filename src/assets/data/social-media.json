@@ -1,17 +1,22 @@
 [
     {
         "label": "Linkedin",
-        "link": "https://www.linkedin.com/in/dilankarathnasiri",
+        "link": "https://www.linkedin.com/in/youssef-ait-tghrayt-7418b5161/",
         "icon": "fab fa-linkedin"
     },
     {
         "label": "GitHub",
-        "link": "https://github.com/dilanka-rathnasiri",
+        "link": "https://github.com/tghrayt",
         "icon": "fab fa-github"
     },
     {
-        "label": "Dev.to",
-        "link": "https://dev.to/dilanka-rathnasiri",
-        "icon": "fab fa-dev"
+        "label": "Website",
+        "link": "https://www.tghrayt.ml",
+        "icon": "fa-solid fa-globe"
+    },
+    {
+        "label": "Twitter",
+        "link": "https://twitter.com/tghrayt",
+        "icon": "fa-brands fa-x-twitter"
     }
 ]
