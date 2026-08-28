@@ -1,7 +1,13 @@
 import { Injectable, Inject, signal } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-export type Lang = 'en' | 'fr';
+export type Lang = 'en' | 'fr' | 'zgh';
+
+const htmlLangByLang: Record<Lang, string> = {
+    en: 'en',
+    fr: 'fr',
+    zgh: 'zgh-Tfng',
+};
 
 const translations: Record<Lang, Record<string, string>> = {
     en: {
@@ -23,8 +29,7 @@ const translations: Record<Lang, Record<string, string>> = {
         'footer.rights': 'All rights reserved.',
         'footer.builtWith': 'Built with',
         'aria.toggleDarkMode': 'Toggle Dark Mode',
-        'aria.switchToFrench': 'Switch to French',
-        'aria.switchToEnglish': 'Switch to English',
+        'aria.languageMenu': 'Change language',
     },
     fr: {
         'nav.home': 'Accueil',
@@ -45,8 +50,30 @@ const translations: Record<Lang, Record<string, string>> = {
         'footer.rights': 'Tous droits réservés.',
         'footer.builtWith': 'Créé avec',
         'aria.toggleDarkMode': 'Activer le mode sombre',
-        'aria.switchToFrench': 'Passer en français',
-        'aria.switchToEnglish': 'Passer en anglais',
+        'aria.languageMenu': 'Changer de langue',
+    },
+    // Best-effort Standard Moroccan Tamazight (Tifinagh, IRCAM orthography).
+    // Short UI labels only — has not been reviewed by a native speaker yet.
+    zgh: {
+        'nav.home': 'ⴰⵙⵏⵓⴱⴳ',
+        'nav.projects': 'ⵉⵙⵏⴼⴰⵔⵏ',
+        'nav.blogs': 'ⴱⵍⵓⴳ',
+        'about.tagline':
+            'ⴰⵎⵙⵙⴽⴰⵔ n ⵓⵙⵏⴼⵍ ⵉⵃⵎⵎⵍⵏ .NET, Angular d ⵜⵖⴰⵔⴰ n ⵓⵙⵏⴼⵍ',
+        'section.whatIDo': 'ⵎⴰⵢⴷ ⵙⵙⴽⴰⵔⵖ',
+        'section.skills': 'ⵜⵉⵣⵎⴰⵔ',
+        'section.experience': 'ⵜⵉⵔⵎⵉⵢⵉⵏ',
+        'section.education': 'ⵉⵙⵍⵎⴰⴷⵏ',
+        'section.certifications': 'ⵙⵉⵔⵜⵉⴼⵉⴽⴰⵜ',
+        'section.projects': 'ⵉⵙⵏⴼⴰⵔⵏ',
+        'section.blogArticles': 'ⵉⵎⵇⵇⵉⵢⵏ n ⵓⴱⵍⵓⴳ',
+        'button.viewSource': 'ⵥⵕ ⴰⴳⵎⵓⴹ',
+        'button.viewCertificate': 'ⵥⵕ ⴰⵙⵉⵔⵜⵉⴼⵉⴽⴰ',
+        'button.readArticle': 'ⵖⵔ ⴰⵎⵇⵇⵉ',
+        'footer.rights': 'ⴰⵣⵔⴼⴰⵏ ⴰⴽⴽⵯ ⵜⵜⵡⴰⵃⴹⴰⵏ.',
+        'footer.builtWith': 'ⵢⵜⵜⵡⴰⴳ ⵙ',
+        'aria.toggleDarkMode': 'ⵙⵏⴼⵍ ⴰⵙⴽⴽⵉⵍ ⴰⴱⵔⴽⴰⵏ',
+        'aria.languageMenu': 'ⵙⵏⴼⵍ ⵜⵓⵜⵍⴰⵢⵜ',
     },
 };
 
@@ -54,6 +81,7 @@ const translations: Record<Lang, Record<string, string>> = {
     providedIn: 'root',
 })
 export class LanguageService {
+    readonly availableLangs: readonly Lang[] = ['en', 'fr', 'zgh'];
     lang = signal<Lang>('en');
 
     constructor(@Inject(DOCUMENT) private document: Document) {
@@ -62,20 +90,23 @@ export class LanguageService {
 
     private initializeLanguage(): void {
         const saved = localStorage.getItem('lang');
-        this.setLang(saved === 'fr' ? 'fr' : 'en');
+        const lang = this.isLang(saved) ? saved : 'en';
+        this.setLanguage(lang);
     }
 
-    toggleLanguage(): void {
-        this.setLang(this.lang() === 'en' ? 'fr' : 'en');
+    setLanguage(lang: Lang): void {
+        this.lang.set(lang);
+        this.document.documentElement.lang = htmlLangByLang[lang];
+        localStorage.setItem('lang', lang);
     }
 
     t(key: string): string {
         return translations[this.lang()][key] ?? key;
     }
 
-    private setLang(lang: Lang): void {
-        this.lang.set(lang);
-        this.document.documentElement.lang = lang;
-        localStorage.setItem('lang', lang);
+    private isLang(value: string | null): value is Lang {
+        return (
+            !!value && (this.availableLangs as string[]).includes(value)
+        );
     }
 }

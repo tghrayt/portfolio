@@ -6,8 +6,9 @@
     --color-primary-hover: var(--color-blue-700);
     --color-secondary: var(--color-teal-500);
     --font-sans:
-        'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        'Inter', 'Noto Sans Tifinagh', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
     --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
 }
 

@@ -21,6 +21,13 @@ const titlesByLang: Record<Lang, string[]> = {
         "Passionné d'Azure DevOps",
         'Architecture Logicielle',
     ],
+    // Best-effort Tifinagh — not yet reviewed by a native speaker.
+    zgh: [
+        'ⴰⵎⵙⵙⴽⴰⵔ n ⵓⵙⵏⴼⵍ Full-Stack',
+        'ⴰⵎⴰⵙⴰⵢ n .NET & Angular',
+        'ⵉⵃⵎⵎⵍ Azure DevOps',
+        'ⵜⵖⴰⵔⴰ n ⵓⵙⵏⴼⵍ',
+    ],
 };
 
 @Component({

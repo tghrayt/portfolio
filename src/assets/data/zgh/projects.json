@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Finance-OS",
+        "description": "Une application moderne de gestion financière personnelle, développée en C#",
+        "link": "https://github.com/tghrayt/Finance-OS"
+    },
+    {
+        "title": "OrganisX",
+        "description": "Une application de gestion de tâches construite avec .NET 9, Angular, PostgreSQL et RabbitMQ",
+        "link": "https://github.com/tghrayt/OrganisX"
+    },
+    {
+        "title": "Vectis",
+        "description": "Une application web responsive pour suivre l'expression, le stockage et la consommation du lait maternel en famille, construite avec .NET, ASP.NET Core Razor Pages et PostgreSQL",
+        "link": "https://github.com/tghrayt/Vectis"
+    },
+    {
+        "title": "ImmoPredict",
+        "description": "Une application ML.NET qui prédit les prix de l'immobilier",
+        "link": "https://github.com/tghrayt/ImmoPredict"
+    },
+    {
+        "title": "FamilyHubOS",
+        "description": "Un workflow automatisé pour l'organisation des réunions familiales et l'éducation des enfants",
+        "link": "https://github.com/tghrayt/FamilyHubOS"
+    },
+    {
+        "title": "MiniStoreApplication",
+        "description": "Un système d'information pour la gestion de magasin, développé en C#",
+        "link": "https://github.com/tghrayt/MiniStoreApplication"
+    },
+    {
+        "title": "portfolio",
+        "description": "Mon site portfolio personnel construit avec Angular",
+        "link": "https://github.com/tghrayt/portfolio"
+    }
+]

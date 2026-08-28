@@ -41,33 +41,67 @@
                     "
                 ></i>
             </button>
-            <button
-                (click)="toggleLanguage()"
-                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer text-xs font-bold tracking-wide text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
-                [attr.aria-label]="
-                    languageService.lang() === 'en'
-                        ? languageService.t('aria.switchToFrench')
-                        : languageService.t('aria.switchToEnglish')
-                "
-            >
-                {{ languageService.lang().toUpperCase() }}
-            </button>
+            <div class="relative">
+                <button
+                    (click)="toggleLangMenu()"
+                    class="px-3 h-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5 cursor-pointer text-xs font-bold tracking-wide text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
+                    aria-haspopup="true"
+                    [attr.aria-expanded]="isLangMenuOpen"
+                    [attr.aria-label]="languageService.t('aria.languageMenu')"
+                >
+                    <i class="fa-solid fa-language text-sm"></i>
+                    {{ languageService.lang().toUpperCase() }}
+                </button>
+                @if (isLangMenuOpen) {
+                    <div
+                        class="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden z-50"
+                    >
+                        @for (l of languages; track l.code) {
+                            <button
+                                (click)="selectLanguage(l.code)"
+                                class="w-full text-left px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm text-gray-700 dark:text-gray-300"
+                                [class.font-bold]="languageService.lang() === l.code"
+                                [class.text-primary]="languageService.lang() === l.code"
+                            >
+                                {{ l.label }}
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
             <app-social-media />
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <div class="md:hidden flex items-center gap-4">
-            <button
-                (click)="toggleLanguage()"
-                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer text-xs font-bold tracking-wide text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
-                [attr.aria-label]="
-                    languageService.lang() === 'en'
-                        ? languageService.t('aria.switchToFrench')
-                        : languageService.t('aria.switchToEnglish')
-                "
-            >
-                {{ languageService.lang().toUpperCase() }}
-            </button>
+            <div class="relative">
+                <button
+                    (click)="toggleLangMenu()"
+                    class="px-3 h-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5 cursor-pointer text-xs font-bold tracking-wide text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
+                    aria-haspopup="true"
+                    [attr.aria-expanded]="isLangMenuOpen"
+                    [attr.aria-label]="languageService.t('aria.languageMenu')"
+                >
+                    <i class="fa-solid fa-language text-sm"></i>
+                    {{ languageService.lang().toUpperCase() }}
+                </button>
+                @if (isLangMenuOpen) {
+                    <div
+                        class="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden z-50"
+                    >
+                        @for (l of languages; track l.code) {
+                            <button
+                                (click)="selectLanguage(l.code)"
+                                class="w-full text-left px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm text-gray-700 dark:text-gray-300"
+                                [class.font-bold]="languageService.lang() === l.code"
+                                [class.text-primary]="languageService.lang() === l.code"
+                            >
+                                {{ l.label }}
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
             <button
                 (click)="toggleDarkMode()"
                 class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
