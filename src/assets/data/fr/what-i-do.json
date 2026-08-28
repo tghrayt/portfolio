@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Développement Backend",
+        "icon": "fa-solid fa-server",
+        "description": "Construction d'applications métier robustes et maintenables avec C#, .NET Core et Angular"
+    },
+    {
+        "title": "Architecture Logicielle",
+        "icon": "fa-solid fa-diagram-project",
+        "description": "Conception de systèmes distribués selon le Domain-Driven Design, l'architecture hexagonale et les microservices"
+    },
+    {
+        "title": "Cloud & DevOps",
+        "icon": "fa-solid fa-cloud",
+        "description": "Déploiement et supervision d'applications avec Azure DevOps, Docker et des outils d'observabilité comme Datadog"
+    }
+]

@@ -13,7 +13,7 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 items-center">
-            @for (item of menuItems; track item.label) {
+            @for (item of menuItems; track item.labelKey) {
                 <a
                     class="font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-hover transition-colors"
                     [routerLink]="item.link"
@@ -21,17 +21,17 @@
                     aria-current="page"
                     [routerLinkActiveOptions]="{ exact: item.exact }"
                 >
-                    {{ item.label }}
+                    {{ languageService.t(item.labelKey) }}
                 </a>
             }
         </div>
 
-        <!-- Right Side: Theme Toggle & Socials (Desktop) -->
+        <!-- Right Side: Theme Toggle, Language Toggle & Socials (Desktop) -->
         <div class="hidden md:flex items-center gap-4">
             <button
                 (click)="toggleDarkMode()"
                 class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
-                aria-label="Toggle Dark Mode"
+                [attr.aria-label]="languageService.t('aria.toggleDarkMode')"
             >
                 <i
                     [class]="
@@ -41,15 +41,37 @@
                     "
                 ></i>
             </button>
+            <button
+                (click)="toggleLanguage()"
+                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer text-lg"
+                [attr.aria-label]="
+                    languageService.lang() === 'en'
+                        ? languageService.t('aria.switchToFrench')
+                        : languageService.t('aria.switchToEnglish')
+                "
+            >
+                {{ languageService.lang() === 'en' ? '🇫🇷' : '🇬🇧' }}
+            </button>
             <app-social-media />
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <div class="md:hidden flex items-center gap-4">
             <button
+                (click)="toggleLanguage()"
+                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer text-lg"
+                [attr.aria-label]="
+                    languageService.lang() === 'en'
+                        ? languageService.t('aria.switchToFrench')
+                        : languageService.t('aria.switchToEnglish')
+                "
+            >
+                {{ languageService.lang() === 'en' ? '🇫🇷' : '🇬🇧' }}
+            </button>
+            <button
                 (click)="toggleDarkMode()"
                 class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors w-10 h-10 flex items-center justify-center cursor-pointer"
-                aria-label="Toggle Dark Mode"
+                [attr.aria-label]="languageService.t('aria.toggleDarkMode')"
             >
                 <i
                     [class]="
@@ -80,7 +102,7 @@
         <div
             class="md:hidden flex flex-col gap-4 mt-4 py-4 border-t border-gray-200 dark:border-gray-800 animate-fade-in-up"
         >
-            @for (item of menuItems; track item.label) {
+            @for (item of menuItems; track item.labelKey) {
                 <a
                     class="block text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-hover transition-colors px-2"
                     [routerLink]="item.link"
@@ -88,7 +110,7 @@
                     [routerLinkActiveOptions]="{ exact: item.exact }"
                     (click)="closeMobileMenu()"
                 >
-                    {{ item.label }}
+                    {{ languageService.t(item.labelKey) }}
                 </a>
             }
             <div

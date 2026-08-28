@@ -1,10 +1,27 @@
 import {
     Component,
-    OnInit,
     OnDestroy,
+    effect,
+    inject,
     ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { LanguageService, Lang } from '../services/language.service';
+
+const titlesByLang: Record<Lang, string[]> = {
+    en: [
+        'Full-Stack Software Engineer',
+        '.NET & Angular Developer',
+        'Azure DevOps Enthusiast',
+        'Software Architecture',
+    ],
+    fr: [
+        'Ingénieur Logiciel Full-Stack',
+        'Développeur .NET & Angular',
+        "Passionné d'Azure DevOps",
+        'Architecture Logicielle',
+    ],
+};
 
 @Component({
     selector: 'app-about-me',
@@ -35,31 +52,41 @@ import { NgOptimizedImage } from '@angular/common';
         `,
     ],
 })
-export class AboutMeComponent implements OnInit, OnDestroy {
-    titles: string[] = [
-        'Full-Stack Software Engineer',
-        '.NET & Angular Developer',
-        'Azure DevOps Enthusiast',
-        'Software Architecture',
-    ];
+export class AboutMeComponent implements OnDestroy {
+    languageService = inject(LanguageService);
+    titles: string[] = titlesByLang.en;
     currentTitle: string = '';
     private titleIndex: number = 0;
     private charIndex: number = 0;
     private isDeleting: boolean = false;
     private typingTimer: any;
 
-    ngOnInit() {
-        if (typeof window !== 'undefined') {
-            this.type();
-        } else {
-            this.currentTitle = this.titles[0];
-        }
+    constructor() {
+        effect(() => {
+            this.titles = titlesByLang[this.languageService.lang()];
+            this.restartTyping();
+        });
     }
 
     ngOnDestroy() {
         if (typeof window !== 'undefined' && this.typingTimer) {
             window.clearTimeout(this.typingTimer);
         }
+    }
+
+    private restartTyping() {
+        if (typeof window === 'undefined') {
+            this.currentTitle = this.titles[0];
+            return;
+        }
+        if (this.typingTimer) {
+            window.clearTimeout(this.typingTimer);
+        }
+        this.titleIndex = 0;
+        this.charIndex = 0;
+        this.isDeleting = false;
+        this.currentTitle = '';
+        this.type();
     }
 
     private type() {

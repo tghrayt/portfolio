@@ -1,5 +1,5 @@
 export interface NavBarItem {
-    label: string;
+    labelKey: string;
     link: string;
     exact: boolean;
 }

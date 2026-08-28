@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SocialMediaComponent } from '../social-media/social-media.component';
 import { NavBarItem } from '../dto/NavBarItem';
 import { ThemeService } from '../services/theme.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
     selector: 'app-nav-bar',
@@ -13,12 +14,13 @@ import { ThemeService } from '../services/theme.service';
 })
 export class NavBarComponent {
     themeService = inject(ThemeService);
+    languageService = inject(LanguageService);
     isMobileMenuOpen = false;
 
     menuItems: NavBarItem[] = [
-        { label: 'Home', link: '/', exact: true },
-        { label: 'Projects', link: '/projects', exact: false },
-        { label: 'Blogs', link: '/blogs', exact: false },
+        { labelKey: 'nav.home', link: '/', exact: true },
+        { labelKey: 'nav.projects', link: '/projects', exact: false },
+        { labelKey: 'nav.blogs', link: '/blogs', exact: false },
     ];
 
     toggleMobileMenu() {
@@ -31,5 +33,9 @@ export class NavBarComponent {
 
     toggleDarkMode() {
         this.themeService.toggleTheme();
+    }
+
+    toggleLanguage() {
+        this.languageService.toggleLanguage();
     }
 }

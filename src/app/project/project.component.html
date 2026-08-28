@@ -4,7 +4,7 @@
     <h2
         class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100"
     >
-        Projects
+        {{ languageService.t('section.projects') }}
     </h2>
     <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl"
@@ -44,7 +44,7 @@
                         rel="noopener noreferrer"
                         class="mt-auto inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white font-medium rounded-xl transition-colors"
                     >
-                        View Source
+                        {{ languageService.t('button.viewSource') }}
                         <i class="fa-brands fa-github text-xl"></i>
                     </a>
                 </div>

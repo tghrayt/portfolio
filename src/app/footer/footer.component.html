@@ -6,13 +6,14 @@
     >
         <span class="text-sm font-medium text-slate-500 dark:text-slate-400">
             <i class="fa-regular fa-copyright mr-1"></i>
-            {{ currentYear }} Youssef Ait Tghrayt. All rights reserved.
+            {{ currentYear }} Youssef Ait Tghrayt.
+            {{ languageService.t('footer.rights') }}
         </span>
 
         <span
             class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400"
         >
-            Built with
+            {{ languageService.t('footer.builtWith') }}
             <div class="flex items-center gap-3">
                 <a
                     href="https://angular.dev"

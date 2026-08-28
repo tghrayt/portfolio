@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, effect, ChangeDetectionStrategy } from '@angular/core';
 
 import { DataService } from '../services/data.service';
+import { LanguageService } from '../services/language.service';
 import { ExperienceItem } from '../dto/ExperienceItem';
 
 @Component({
@@ -8,16 +9,20 @@ import { ExperienceItem } from '../dto/ExperienceItem';
     changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './experience.component.html',
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent {
     experienceItems: ExperienceItem[] = [];
 
-    constructor(private dataService: DataService) {}
-
-    ngOnInit(): void {
-        this.dataService
-            .loadData<ExperienceItem[]>('experience')
-            .subscribe((data) => {
-                this.experienceItems = data;
-            });
+    constructor(
+        private dataService: DataService,
+        public languageService: LanguageService
+    ) {
+        effect(() => {
+            const lang = this.languageService.lang();
+            this.dataService
+                .loadData<ExperienceItem[]>(`${lang}/experience`)
+                .subscribe((data) => {
+                    this.experienceItems = data;
+                });
+        });
     }
 }

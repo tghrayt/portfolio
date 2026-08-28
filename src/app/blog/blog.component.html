@@ -4,7 +4,7 @@
     <h2
         class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100"
     >
-        Blog Articles
+        {{ languageService.t('section.blogArticles') }}
     </h2>
     <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl"
@@ -44,7 +44,7 @@
                         rel="noopener noreferrer"
                         class="mt-auto inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white font-medium rounded-xl transition-colors"
                     >
-                        Read Article
+                        {{ languageService.t('button.readArticle') }}
                         <i class="fa-brands fa-dev text-xl"></i>
                     </a>
                 </div>

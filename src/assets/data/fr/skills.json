@@ -1,0 +1,100 @@
+[
+    {
+        "category": "Langages & Frameworks",
+        "skills": [
+            { "name": "C#", "icon": "fa-solid fa-code text-purple-600" },
+            {
+                "name": ".NET Core",
+                "icon": "fa-brands fa-microsoft text-indigo-600"
+            },
+            { "name": "Angular", "icon": "fa-brands fa-angular text-red-600" },
+            {
+                "name": "TypeScript",
+                "icon": "fa-solid fa-file-code text-blue-500"
+            }
+        ]
+    },
+    {
+        "category": "Architecture & Pratiques",
+        "skills": [
+            {
+                "name": "Domain-Driven Design",
+                "icon": "fa-solid fa-diagram-project text-emerald-600"
+            },
+            {
+                "name": "Hexagonal Architecture",
+                "icon": "fa-solid fa-shapes text-emerald-500"
+            },
+            {
+                "name": "Microservices",
+                "icon": "fa-solid fa-cubes text-orange-400"
+            },
+            {
+                "name": "Tests Unitaires & de Charge",
+                "icon": "fa-solid fa-vial text-green-600"
+            }
+        ]
+    },
+    {
+        "category": "Cloud & DevOps",
+        "skills": [
+            {
+                "name": "Azure DevOps",
+                "icon": "fa-solid fa-cloud text-blue-500"
+            },
+            { "name": "Docker", "icon": "fa-brands fa-docker text-blue-400" },
+            { "name": "Jenkins", "icon": "fa-brands fa-jenkins text-red-500" },
+            {
+                "name": "GitLab CI/CD",
+                "icon": "fa-brands fa-gitlab text-orange-600"
+            },
+            { "name": "Git", "icon": "fa-brands fa-git-alt text-orange-600" }
+        ]
+    },
+    {
+        "category": "APIs & Bases de Données",
+        "skills": [
+            {
+                "name": "REST API",
+                "icon": "fa-solid fa-exchange-alt text-slate-500"
+            },
+            {
+                "name": "Swagger",
+                "icon": "fa-solid fa-file-code text-green-600"
+            },
+            {
+                "name": "SQL Server",
+                "icon": "fa-solid fa-database text-blue-600"
+            },
+            {
+                "name": "PostgreSQL",
+                "icon": "fa-solid fa-database text-sky-600"
+            },
+            { "name": "Oracle", "icon": "fa-solid fa-database text-red-600" }
+        ]
+    },
+    {
+        "category": "Observabilité & Monitoring",
+        "skills": [
+            {
+                "name": "Datadog",
+                "icon": "fa-solid fa-paw text-purple-600"
+            },
+            {
+                "name": "ELK Stack",
+                "icon": "fa-solid fa-magnifying-glass-chart text-yellow-600"
+            }
+        ]
+    },
+    {
+        "category": "Ingénierie Assistée par IA",
+        "skills": [
+            { "name": "Claude", "icon": "fa-solid fa-robot text-violet-500" },
+            {
+                "name": "GitHub Copilot",
+                "icon": "fa-brands fa-github text-slate-700"
+            },
+            { "name": "Codex", "icon": "fa-solid fa-brain text-fuchsia-500" }
+        ]
+    }
+]
