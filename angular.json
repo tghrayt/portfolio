@@ -96,7 +96,7 @@
                 "deploy": {
                     "builder": "angular-cli-ghpages:deploy",
                     "options": {
-                        "baseHref": "https://dilanka-rathnasiri.github.io/portfolio/"
+                        "baseHref": "https://tghrayt.github.io/portfolio/"
                     }
                 }
             }
