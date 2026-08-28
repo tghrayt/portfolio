@@ -18,6 +18,7 @@ export class NavBarComponent {
     menuItems: NavBarItem[] = [
         { label: 'Home', link: '/', exact: true },
         { label: 'Projects', link: '/projects', exact: false },
+        { label: 'Blogs', link: '/blogs', exact: false },
     ];
 
     toggleMobileMenu() {
