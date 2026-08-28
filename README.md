@@ -1,8 +1,8 @@
-# Dilanka Rathnasiri – Portfolio
+# Youssef Ait Tghrayt – Portfolio
 
 A modern Angular portfolio to showcase my projects and skills as a developer, built with Tailwind CSS.
 
-**Web:** https://dilanka-rathnasiri.github.io/portfolio
+**Web:** https://tghrayt.github.io/portfolio
 
 ## Why This Portfolio?
 
@@ -19,7 +19,7 @@ I built this simple web app to present my work and technical background professi
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/dilanka-rathnasiri/portfolio.git
+git clone https://github.com/tghrayt/portfolio.git
 cd portfolio
 npm install
 ```
@@ -44,8 +44,6 @@ Build output will be in the `dist/` directory.
 
 ## Deploy to GitHub Pages
 
-To deploy the Angular app to GitHub Pages:
+Deployment is automatic: a [GitHub Actions workflow](.github/workflows/deploy.yml) builds and publishes the app to GitHub Pages on every push to `main`.
 
-```bash
-ng deploy
-```
+To trigger a manual deployment without pushing code, run the workflow from the **Actions** tab (`workflow_dispatch`).
