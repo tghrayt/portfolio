@@ -2,11 +2,13 @@
     {
         "title": "Engineering Degree, Computer Software Engineering",
         "organization": "Faculté des Sciences et Techniques de Mohammedia (FSTM)",
-        "time": "September 2017 – July 2020"
+        "time": "September 2017 – July 2020",
+        "logo": "assets/logos/fstm.png"
     },
     {
         "title": "Bachelor's Degree, Applied Mathematics",
         "organization": "Faculté des Sciences Moulay Ismail",
-        "time": "September 2014 – July 2017"
+        "time": "September 2014 – July 2017",
+        "logo": "assets/logos/fs-umi.png"
     }
 ]

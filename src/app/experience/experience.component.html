@@ -17,22 +17,35 @@
 
                     <!-- Content Card -->
                     <div
-                        class="bg-white dark:bg-slate-800/80 rounded-2xl p-6 shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                        class="bg-white dark:bg-slate-800/80 rounded-2xl p-6 shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row sm:items-start gap-4"
                     >
-                        <h3
-                            class="flex items-center mb-1 text-xl font-bold text-slate-800 dark:text-white"
-                        >
-                            {{ item.title }}
-                        </h3>
-                        <div
-                            class="text-lg font-medium text-slate-600 dark:text-slate-300 mb-2"
-                        >
-                            {{ item.organization }}
+                        @if (item.logo) {
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-xl bg-white flex items-center justify-center p-2 border border-slate-100"
+                            >
+                                <img
+                                    [src]="item.logo"
+                                    [alt]="item.organization"
+                                    class="max-w-full max-h-full object-contain"
+                                />
+                            </div>
+                        }
+                        <div>
+                            <h3
+                                class="flex items-center mb-1 text-xl font-bold text-slate-800 dark:text-white"
+                            >
+                                {{ item.title }}
+                            </h3>
+                            <div
+                                class="text-lg font-medium text-slate-600 dark:text-slate-300 mb-2"
+                            >
+                                {{ item.organization }}
+                            </div>
+                            <time
+                                class="block mb-4 text-sm font-semibold leading-none text-slate-500 dark:text-slate-400"
+                                >{{ item.time }}</time
+                            >
                         </div>
-                        <time
-                            class="block mb-4 text-sm font-semibold leading-none text-slate-500 dark:text-slate-400"
-                            >{{ item.time }}</time
-                        >
                     </div>
                 </li>
             }

@@ -2,26 +2,31 @@
     {
         "title": "Software Engineer – Fullstack .NET/Angular",
         "organization": "Natixis (Groupe BPCE)",
-        "time": "From September 2026 to Present"
+        "time": "From September 2026 to Present",
+        "logo": "assets/logos/natixis.png"
     },
     {
         "title": "Software Engineer – Fullstack .NET/Angular (Azure)",
         "organization": "Groupe TF1",
-        "time": "From April 2023 to September 2026"
+        "time": "From April 2023 to September 2026",
+        "logo": "assets/logos/tf1.svg"
     },
     {
         "title": "Software Engineer – Fullstack .NET/Angular",
         "organization": "Atos",
-        "time": "From February 2022 to April 2023"
+        "time": "From February 2022 to April 2023",
+        "logo": "assets/logos/atos.png"
     },
     {
         "title": "Software Engineer – .NET/Angular",
         "organization": "INVOLYS",
-        "time": "From August 2020 to December 2021"
+        "time": "From August 2020 to December 2021",
+        "logo": "assets/logos/involys.jpg"
     },
     {
         "title": "Software Engineering Intern (Final Year Project)",
         "organization": "CIH Bank",
-        "time": "From February 2020 to September 2020"
+        "time": "From February 2020 to September 2020",
+        "logo": "assets/logos/cihbank.png"
     }
 ]
