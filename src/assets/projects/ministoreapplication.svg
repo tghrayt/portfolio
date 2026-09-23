@@ -1,0 +1,23 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <!-- storefront -->
+  <g transform="translate(230,130)">
+    <rect x="0" y="35" width="220" height="120" fill="#ffffff" opacity="0.85"/>
+    <polygon points="-15,35 235,35 210,0 10,0" fill="#3b82f6" opacity="0.55"/>
+    <rect x="85" y="85" width="50" height="70" fill="#3b82f6" opacity="0.5"/>
+    <rect x="15" y="52" width="50" height="26" fill="#06b6d4" opacity="0.4"/>
+    <rect x="155" y="52" width="50" height="26" fill="#06b6d4" opacity="0.4"/>
+  </g>
+  <!-- crates -->
+  <g opacity="0.5" fill="#ffffff">
+    <rect x="560" y="215" width="55" height="55" rx="6"/>
+    <rect x="625" y="215" width="55" height="55" rx="6"/>
+    <rect x="592" y="160" width="55" height="55" rx="6"/>
+  </g>
+</svg>

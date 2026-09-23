@@ -1,0 +1,22 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <!-- house -->
+  <g opacity="0.9">
+    <polygon points="180,140 260,200 100,200" fill="#ffffff" opacity="0.4"/>
+    <rect x="120" y="200" width="120" height="90" fill="#ffffff" opacity="0.3"/>
+    <rect x="165" y="235" width="30" height="55" fill="#3b82f6" opacity="0.5"/>
+  </g>
+  <!-- upward trend graph -->
+  <polyline points="360,280 430,245 500,258 570,190 640,155 700,125" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <circle cx="430" cy="245" r="9" fill="#ffffff"/>
+  <circle cx="570" cy="190" r="9" fill="#ffffff"/>
+  <circle cx="700" cy="125" r="11" fill="#ffffff"/>
+  <!-- arrow -->
+  <polygon points="700,125 680,132 692,144" fill="#ffffff"/>
+</svg>

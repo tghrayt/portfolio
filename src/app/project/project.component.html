@@ -13,16 +13,26 @@
             <div
                 class="group flex flex-col bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 dark:border-slate-700"
             >
-                <!-- Abstract Top Banner -->
-                <div
-                    class="h-32 bg-gradient-to-r from-blue-500 to-cyan-500 relative overflow-hidden"
-                >
-                    <div
-                        class="absolute inset-0 bg-white/20 dark:bg-black/20 mix-blend-overlay"
-                    ></div>
-                    <i
-                        class="fa-solid fa-code absolute -bottom-3 -right-3 text-9xl text-white/20 group-hover:scale-110 transition-transform duration-500"
-                    ></i>
+                <!-- Top Banner -->
+                <div class="h-32 relative overflow-hidden">
+                    @if (project.image) {
+                        <img
+                            [src]="project.image"
+                            [alt]="project.title"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                    } @else {
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500"
+                        >
+                            <div
+                                class="absolute inset-0 bg-white/20 dark:bg-black/20 mix-blend-overlay"
+                            ></div>
+                            <i
+                                class="fa-solid fa-code absolute -bottom-3 -right-3 text-9xl text-white/20 group-hover:scale-110 transition-transform duration-500"
+                            ></i>
+                        </div>
+                    }
                 </div>
 
                 <!-- Content -->

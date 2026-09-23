@@ -1,0 +1,31 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <!-- calendar -->
+  <g transform="translate(300,110)">
+    <rect x="0" y="10" width="200" height="160" rx="14" fill="#ffffff" opacity="0.9"/>
+    <rect x="0" y="10" width="200" height="42" rx="14" fill="#3b82f6" opacity="0.55"/>
+    <rect x="26" y="0" width="14" height="32" rx="5" fill="#ffffff"/>
+    <rect x="160" y="0" width="14" height="32" rx="5" fill="#ffffff"/>
+    <g fill="#3b82f6" opacity="0.35">
+      <rect x="20" y="76" width="26" height="26" rx="5"/>
+      <rect x="60" y="76" width="26" height="26" rx="5"/>
+      <rect x="100" y="76" width="26" height="26" rx="5"/>
+      <rect x="140" y="76" width="26" height="26" rx="5"/>
+      <rect x="20" y="116" width="26" height="26" rx="5"/>
+      <rect x="60" y="116" width="26" height="26" rx="5"/>
+    </g>
+    <rect x="100" y="116" width="26" height="26" rx="5" fill="#06b6d4" opacity="0.9"/>
+  </g>
+  <!-- family dots -->
+  <circle cx="150" cy="270" r="22" fill="#ffffff" opacity="0.55"/>
+  <circle cx="194" cy="270" r="17" fill="#ffffff" opacity="0.5"/>
+  <circle cx="226" cy="270" r="12" fill="#ffffff" opacity="0.45"/>
+  <circle cx="610" cy="270" r="22" fill="#ffffff" opacity="0.55"/>
+  <circle cx="650" cy="270" r="17" fill="#ffffff" opacity="0.5"/>
+</svg>

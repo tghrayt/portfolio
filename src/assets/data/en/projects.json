@@ -2,36 +2,43 @@
     {
         "title": "Finance-OS",
         "description": "A modern personal finance management application built with C#",
-        "link": "https://github.com/tghrayt/Finance-OS"
+        "link": "https://github.com/tghrayt/Finance-OS",
+        "image": "assets/projects/finance-os.svg"
     },
     {
         "title": "OrganisX",
         "description": "A task management application built with .NET 9, Angular, PostgreSQL, and RabbitMQ",
-        "link": "https://github.com/tghrayt/OrganisX"
+        "link": "https://github.com/tghrayt/OrganisX",
+        "image": "assets/projects/organisx.svg"
     },
     {
         "title": "Vectis",
         "description": "A responsive web app to track breast milk expression, storage, and consumption for families, built with .NET, ASP.NET Core Razor Pages, and PostgreSQL",
-        "link": "https://github.com/tghrayt/Vectis"
+        "link": "https://github.com/tghrayt/Vectis",
+        "image": "assets/projects/vectis.svg"
     },
     {
         "title": "ImmoPredict",
         "description": "An ML.NET application predicting real estate prices",
-        "link": "https://github.com/tghrayt/ImmoPredict"
+        "link": "https://github.com/tghrayt/ImmoPredict",
+        "image": "assets/projects/immopredict.svg"
     },
     {
         "title": "FamilyHubOS",
         "description": "An automated family meeting workflow for child education",
-        "link": "https://github.com/tghrayt/FamilyHubOS"
+        "link": "https://github.com/tghrayt/FamilyHubOS",
+        "image": "assets/projects/familyhubos.svg"
     },
     {
         "title": "MiniStoreApplication",
         "description": "An information system application for store management, built with C#",
-        "link": "https://github.com/tghrayt/MiniStoreApplication"
+        "link": "https://github.com/tghrayt/MiniStoreApplication",
+        "image": "assets/projects/ministoreapplication.svg"
     },
     {
         "title": "portfolio",
         "description": "My personal portfolio website built with Angular",
-        "link": "https://github.com/tghrayt/portfolio"
+        "link": "https://github.com/tghrayt/portfolio",
+        "image": "assets/projects/portfolio.svg"
     }
 ]

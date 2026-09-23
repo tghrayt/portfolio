@@ -1,0 +1,25 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <!-- 3 kanban columns -->
+  <rect x="120" y="120" width="160" height="170" rx="14" fill="#ffffff" opacity="0.14"/>
+  <rect x="320" y="120" width="160" height="170" rx="14" fill="#ffffff" opacity="0.20"/>
+  <rect x="520" y="120" width="160" height="170" rx="14" fill="#ffffff" opacity="0.26"/>
+  <!-- cards column 1 -->
+  <rect x="140" y="140" width="120" height="36" rx="8" fill="#ffffff" opacity="0.55"/>
+  <rect x="140" y="184" width="120" height="36" rx="8" fill="#ffffff" opacity="0.4"/>
+  <!-- cards column 2 -->
+  <rect x="340" y="140" width="120" height="36" rx="8" fill="#ffffff" opacity="0.6"/>
+  <rect x="340" y="184" width="120" height="36" rx="8" fill="#ffffff" opacity="0.45"/>
+  <rect x="340" y="228" width="120" height="36" rx="8" fill="#ffffff" opacity="0.35"/>
+  <!-- cards column 3 -->
+  <rect x="540" y="140" width="120" height="36" rx="8" fill="#ffffff" opacity="0.65"/>
+  <!-- check mark badge -->
+  <circle cx="600" cy="255" r="24" fill="#ffffff" opacity="0.9"/>
+  <path d="M589 255 L598 264 L613 246" fill="none" stroke="#0891b2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
